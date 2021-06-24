@@ -1,0 +1,11 @@
+Top Down
+
+Guns
+
+STAGE:
+	-Different Maps
+	-Static Stage, doesn't change during game
+	-
+
+ART STYLE: 
+	-
