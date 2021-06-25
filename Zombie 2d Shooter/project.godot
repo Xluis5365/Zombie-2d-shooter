@@ -14,11 +14,6 @@ config/name="Zombie 2d Shooter"
 run/main_scene="res://Scenes/Main World.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/borderless=true
-window/size/fullscreen=true
-
 [input]
 
 Up={
