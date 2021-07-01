@@ -16,6 +16,11 @@ func _physics_process(delta):
 	else:
 		apply_movement(axis * ACCELERATION * delta)
 	velocity = move_and_slide(velocity)
+	if velocity > Vector2.ZERO:
+		ap.play("Walking")
+	elif velocity < Vector2.ZERO:
+		ap.play("Walking")
+	
 	
 func get_input_axis():
 	var axis = Vector2.ZERO
