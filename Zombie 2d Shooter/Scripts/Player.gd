@@ -4,6 +4,8 @@ signal player_fired(uzi_bullet, position, direction)
 
 onready var ap = $AnimationPlayer
 
+onready var cooldown = $Cooldown
+
 onready var uzi = $Hand/Uzi
 onready var ak = $Hand/Ak
 onready var m4 = $Hand/M4A14
@@ -13,6 +15,8 @@ onready var uzi_gun_direction = $Uzi_gun_direction
 onready var uzi_end_of_gun = $Hand/bulletpoints/uziendofgun
 
 export (PackedScene) var uzi_bullet
+
+onready var muzzleflash = $Particles2D
 
 var speed = 10
 var max_speed = 200
@@ -63,6 +67,11 @@ func _unhandled_input(event):
 		shoot()
 
 func shoot():
-	var uzi_bullet_instance = uzi_bullet.instance()
-	var direction = (uzi_gun_direction.global_position - uzi_end_of_gun.global_position).normalized()
-	emit_signal("player_fired", uzi_bullet_instance, uzi_end_of_gun.global_position, direction)
+	if cooldown.is_stopped():
+		muzzleflash.emitting = true
+		var uzi_bullet_instance = uzi_bullet.instance()
+		var direction = (uzi_gun_direction.global_position - uzi_end_of_gun.global_position).normalized()
+		emit_signal("player_fired", uzi_bullet_instance, uzi_end_of_gun.global_position, direction)
+		cooldown.start()
+	else:
+		pass

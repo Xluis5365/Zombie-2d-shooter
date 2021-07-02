@@ -1,10 +1,14 @@
 extends Area2D
 class_name uzi_bullet
 
-export var speed = 100
+export var speed = 30
+
+onready var vanish_timer = $Vanish_Timer
 
 var direction := Vector2.ZERO
 
+func _ready():
+	vanish_timer.start()
 func _physics_process(delta: float) -> void:
 	if direction !=  Vector2.ZERO:
 		var velocity = direction * speed

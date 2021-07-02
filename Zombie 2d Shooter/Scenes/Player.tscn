@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://playerwithoutgunwithcamo (1).png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/M4A14.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Sniper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Uzi_Bullet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sprites/White_Square.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.3841
@@ -27,6 +28,16 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+gravity = Vector3( 10, 0, 0 )
+initial_velocity = 8.0
+angular_velocity = 68.57
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.1
+color = Color( 1, 0.733333, 0, 1 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -106,3 +117,19 @@ smoothing_speed = 3.0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 49.6129, 8.82941 )
+emitting = false
+amount = 13
+lifetime = 0.5
+one_shot = true
+speed_scale = 10.28
+explosiveness = 0.09
+randomness = 0.25
+process_material = SubResource( 3 )
+texture = ExtResource( 9 )
