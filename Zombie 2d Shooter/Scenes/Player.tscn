@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://playerwithoutgunwithcamo (1).png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Uzi_Bullet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sprites/White_Square.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Health.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.3841
@@ -191,3 +192,5 @@ process_material = SubResource( 3 )
 texture = ExtResource( 9 )
 
 [node name="Health" parent="." instance=ExtResource( 10 )]
+
+[node name="GUI" parent="." instance=ExtResource( 11 )]
