@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 signal player_fired(uzi_bullet, position, direction)
 
+var health = 100
+
 onready var ap = $AnimationPlayer
 
 onready var cooldown = $Cooldown
@@ -65,6 +67,8 @@ func apply_movement(acceleration):
 func _unhandled_input(event):
 	if event.is_action_pressed("Shoot"):
 		shoot()
+	elif event.is_action_released("Shoot"):
+		shoot()
 
 func shoot():
 	if cooldown.is_stopped():
@@ -75,3 +79,7 @@ func shoot():
 		cooldown.start()
 	else:
 		pass
+
+func handle_hit_by_enemy():
+	health -= 10
+	print("player hit", health)

@@ -10,8 +10,8 @@ script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-[node name="Luis Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1595.25, 962.765 )
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1278.09, 634.914 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 4 )
