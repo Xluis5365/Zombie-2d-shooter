@@ -7,6 +7,10 @@ onready var ak = $Hand/Ak
 onready var m4 = $Hand/M4A14
 onready var sniper = $Hand/Sniper
 
+onready var uzi_end_of_gun = $Hand/bulletpoints/uziendofgun
+
+export (PackedScene) var Uzi_Bullet
+
 var speed = 10
 var max_speed = 200
 var ACCELERATION = 1000
@@ -56,4 +60,9 @@ func _unhandled_input(event):
 		shoot()
 
 func shoot():
-	print("shooting")
+	var uzi_bullet_instance = Uzi_Bullet.instance()
+	add_child(uzi_bullet_instance)
+	uzi_bullet_instance.global_position = uzi_end_of_gun.global_position
+	var target = get_global_mouse_position()
+	var direction_to_mouse = uzi_bullet_instance.global_position.direction_to(target).normalized()
+	uzi_bullet_instance.set_direction(direction_to_mouse)

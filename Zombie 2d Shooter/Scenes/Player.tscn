@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Ak.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/M4A14.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Sniper.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Sprites/Uzi_bullet.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Uzi_Bullet.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.3841
@@ -32,6 +32,7 @@ tracks/0/keys = {
 "Player",
 ]]
 script = ExtResource( 1 )
+Uzi_Bullet = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1.26135, 5.88628 )
@@ -57,6 +58,32 @@ position = Vector2( 83.5306, 0.374573 )
 visible = false
 position = Vector2( 88.7747, 1.49831 )
 
+[node name="bulletpoints" type="Node2D" parent="Hand"]
+
+[node name="uziendofgun" type="Position2D" parent="Hand/bulletpoints"]
+position = Vector2( 88.7668, 1.00113 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="akendofgun" type="Position2D" parent="Hand/bulletpoints"]
+position = Vector2( 105.452, 0.667419 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="m4endofgun" type="Position2D" parent="Hand/bulletpoints"]
+position = Vector2( 120.136, 0.33371 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="sniperendofgun" type="Position2D" parent="Hand/bulletpoints"]
+position = Vector2( 134.151, 1.33484 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Sprite2" type="Sprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 4 )
@@ -74,11 +101,3 @@ smoothing_speed = 10.0
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="Uzi_Bullet" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Uzi_Bullet"]
-
-[node name="Sprite" type="Sprite" parent="Uzi_Bullet"]
-position = Vector2( 62.3629, 2.22725 )
-texture = ExtResource( 8 )
