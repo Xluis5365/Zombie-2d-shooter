@@ -194,3 +194,9 @@ texture = ExtResource( 9 )
 [node name="Health" parent="." instance=ExtResource( 10 )]
 
 [node name="GUI" parent="." instance=ExtResource( 11 )]
+
+[node name="Healthtest" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Healthtest" to="." method="_on_Healthtest_timeout"]

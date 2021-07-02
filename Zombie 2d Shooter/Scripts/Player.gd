@@ -1,11 +1,16 @@
 extends KinematicBody2D
+class_name Player
 
+signal player_health_changed(new_health)
 signal player_fired(uzi_bullet, position, direction)
 
+signal weapon_ammo_changed(new_ammo_count)
 signal weapon_out_of_ammo
 
 var max_ammo = 30
-var current_ammo = max_ammo
+var current_ammo = max_ammo setget set_current_ammo
+
+onready var healthtest = $Healthtest
 
 onready var ap = $AnimationPlayer
 
@@ -82,6 +87,18 @@ func start_reload():
 
 func _stop_reload():
 	current_ammo = max_ammo
+	emit_signal("weapon_ammo_changed", current_ammo)
+
+
+
+
+func set_current_ammo(new_ammo: int):
+	var actual_ammo = clamp(new_ammo, 0, max_ammo)
+	if actual_ammo != current_ammo:
+		current_ammo = actual_ammo
+		if current_ammo == 0:
+			emit_signal("weapon_out_of_ammo")
+		emit_signal("weapon_ammo_changed", current_ammo)
 
 func shoot():
 	if current_ammo != 0 and cooldown.is_stopped():
@@ -90,20 +107,25 @@ func shoot():
 		var direction = (uzi_gun_direction.global_position - uzi_end_of_gun.global_position).normalized()
 		emit_signal("player_fired", uzi_bullet_instance, uzi_end_of_gun.global_position, direction)
 		cooldown.start()
-		current_ammo -= 1
-		if current_ammo == 0:
-			emit_signal("weapon_out_of_ammo")
+		set_current_ammo(current_ammo - 1)
+
 		print(current_ammo)
 	else:
 		pass
 
 func handle_hit_by_enemy():
 	Health_stat.health -= 10
-	print("player hit", Health_stat.health)
+	print("player_health_changed", Health_stat.health)
 
 
 func _ready():
+	healthtest.start()
 	connect("weapon_out_of_ammo", self, "handle_reload")
 
 func handle_reload():
 	pass
+
+
+func _on_Healthtest_timeout():
+	Health_stat.health -= 50
+	print("less health")
