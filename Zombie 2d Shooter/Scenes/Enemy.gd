@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var timer = $Timer
 onready var ap = $AnimationPlayer
 
-var health = 100
+onready var Health_stat = $Health
 
 enum {
 	IDLE,
@@ -33,8 +33,7 @@ func _on_Sight_body_exited(body):
 		state = IDLE
 
 func handle_hit_by_enemy():
-	health -= 20
-	print("enemy hit", health)
-	if health <= 0:
-		ap.play("pre enemy death")
+	Health_stat.health -= 20
+	print("enemy hit", Health_stat.health)
+	if Health_stat.health <= 0:
 		queue_free()

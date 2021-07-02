@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://playerwithoutgunwithcamo (1).png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Sniper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Uzi_Bullet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sprites/White_Square.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Health.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.3841
@@ -27,6 +28,60 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "reload"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hand/Uzi:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 83.4545, -3.1176 ), Vector2( 76.5249, -3.1176 ), Vector2( 83.4545, -3.1176 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite2:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -0.648042, 0.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_stop_reload"
+} ]
 }
 
 [sub_resource type="ParticlesMaterial" id=3]
@@ -104,6 +159,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Walking = SubResource( 2 )
+anims/reload = SubResource( 4 )
 
 [node name="Uzi_gun_direction" type="Position2D" parent="."]
 position = Vector2( 51.3418, 8.18948 )
@@ -133,3 +189,5 @@ explosiveness = 0.09
 randomness = 0.25
 process_material = SubResource( 3 )
 texture = ExtResource( 9 )
+
+[node name="Health" parent="." instance=ExtResource( 10 )]

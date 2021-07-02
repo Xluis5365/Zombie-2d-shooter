@@ -2,7 +2,10 @@ extends KinematicBody2D
 
 signal player_fired(uzi_bullet, position, direction)
 
-var health = 100
+signal weapon_out_of_ammo
+
+var max_ammo = 30
+var current_ammo = max_ammo
 
 onready var ap = $AnimationPlayer
 
@@ -17,6 +20,8 @@ onready var uzi_gun_direction = $Uzi_gun_direction
 onready var uzi_end_of_gun = $Hand/bulletpoints/uziendofgun
 
 export (PackedScene) var uzi_bullet
+
+onready var Health_stat = $Health
 
 onready var muzzleflash = $Particles2D
 
@@ -69,17 +74,36 @@ func _unhandled_input(event):
 		shoot()
 	elif event.is_action_released("Shoot"):
 		shoot()
+	elif event.is_action_released("reload"):
+		start_reload()
+
+func start_reload():
+	ap.play("reload")
+
+func _stop_reload():
+	current_ammo = max_ammo
 
 func shoot():
-	if cooldown.is_stopped():
+	if current_ammo != 0 and cooldown.is_stopped():
 		muzzleflash.emitting = true
 		var uzi_bullet_instance = uzi_bullet.instance()
 		var direction = (uzi_gun_direction.global_position - uzi_end_of_gun.global_position).normalized()
 		emit_signal("player_fired", uzi_bullet_instance, uzi_end_of_gun.global_position, direction)
 		cooldown.start()
+		current_ammo -= 1
+		if current_ammo == 0:
+			emit_signal("weapon_out_of_ammo")
+		print(current_ammo)
 	else:
 		pass
 
 func handle_hit_by_enemy():
-	health -= 10
-	print("player hit", health)
+	Health_stat.health -= 10
+	print("player hit", Health_stat.health)
+
+
+func _ready():
+	connect("weapon_out_of_ammo", self, "handle_reload")
+
+func handle_reload():
+	pass
