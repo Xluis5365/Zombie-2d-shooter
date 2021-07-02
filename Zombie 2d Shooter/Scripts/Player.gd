@@ -2,9 +2,16 @@ extends KinematicBody2D
 
 onready var ap = $AnimationPlayer
 
+onready var uzi = $Hand/Uzi
+onready var ak = $Hand/Ak
+onready var m4 = $Hand/M4A14
+onready var sniper = $Hand/Sniper
+
 var speed = 10
 var max_speed = 200
 var ACCELERATION = 1000
+
+var current_weapon = 1
 
 var velocity = Vector2()
 
@@ -20,6 +27,8 @@ func _physics_process(delta):
 		ap.play("Walking")
 	elif velocity < Vector2.ZERO:
 		ap.play("Walking")
+	
+	
 	
 	
 func get_input_axis():
@@ -41,3 +50,10 @@ func apply_movement(acceleration):
 	velocity = velocity.clamped(max_speed)
 	if velocity.length() > max_speed:
 		velocity =  velocity.normalized() * max_speed
+
+func _unhandled_input(event):
+	if Input.is_action_pressed("Shoot"):
+		shoot()
+
+func shoot():
+	print("shooting")

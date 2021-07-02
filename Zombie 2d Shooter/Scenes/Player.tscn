@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://playerwithoutgunwithcamo (1).png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Ak.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/M4A14.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Sniper.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/Uzi_bullet.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.3841
@@ -73,3 +74,11 @@ smoothing_speed = 10.0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Uzi_Bullet" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Uzi_Bullet"]
+
+[node name="Sprite" type="Sprite" parent="Uzi_Bullet"]
+position = Vector2( 62.3629, 2.22725 )
+texture = ExtResource( 8 )
