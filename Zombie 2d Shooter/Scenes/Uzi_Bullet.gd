@@ -1,7 +1,7 @@
 extends Area2D
+class_name uzi_bullet
 
-
-export var speed = 300
+export var speed = 100
 
 var direction := Vector2.ZERO
 
@@ -13,3 +13,8 @@ func _physics_process(delta: float) -> void:
 
 func set_direction(direction: Vector2):
 	self.direction = direction
+	rotation += direction.angle()
+
+
+func _on_Vanish_Timer_timeout() -> void:
+	queue_free()

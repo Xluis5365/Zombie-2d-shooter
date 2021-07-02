@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_fired(uzi_bullet, position, direction)
+
 onready var ap = $AnimationPlayer
 
 onready var uzi = $Hand/Uzi
@@ -7,9 +9,10 @@ onready var ak = $Hand/Ak
 onready var m4 = $Hand/M4A14
 onready var sniper = $Hand/Sniper
 
+onready var uzi_gun_direction = $Uzi_gun_direction
 onready var uzi_end_of_gun = $Hand/bulletpoints/uziendofgun
 
-export (PackedScene) var Uzi_Bullet
+export (PackedScene) var uzi_bullet
 
 var speed = 10
 var max_speed = 200
@@ -56,13 +59,10 @@ func apply_movement(acceleration):
 		velocity =  velocity.normalized() * max_speed
 
 func _unhandled_input(event):
-	if Input.is_action_pressed("Shoot"):
+	if event.is_action_pressed("Shoot"):
 		shoot()
 
 func shoot():
-	var uzi_bullet_instance = Uzi_Bullet.instance()
-	add_child(uzi_bullet_instance)
-	uzi_bullet_instance.global_position = uzi_end_of_gun.global_position
-	var target = get_global_mouse_position()
-	var direction_to_mouse = uzi_bullet_instance.global_position.direction_to(target).normalized()
-	uzi_bullet_instance.set_direction(direction_to_mouse)
+	var uzi_bullet_instance = uzi_bullet.instance()
+	var direction = (uzi_gun_direction.global_position - uzi_end_of_gun.global_position).normalized()
+	emit_signal("player_fired", uzi_bullet_instance, uzi_end_of_gun.global_position, direction)

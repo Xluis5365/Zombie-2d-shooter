@@ -32,7 +32,7 @@ tracks/0/keys = {
 "Player",
 ]]
 script = ExtResource( 1 )
-Uzi_Bullet = ExtResource( 8 )
+uzi_bullet = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1.26135, 5.88628 )
@@ -94,10 +94,15 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Walking = SubResource( 2 )
 
+[node name="Uzi_gun_direction" type="Position2D" parent="."]
+position = Vector2( 51.3418, 8.18948 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -1.19209e-07, 0 )
 current = true
+process_mode = 0
 smoothing_enabled = true
-smoothing_speed = 10.0
+smoothing_speed = 3.0
 __meta__ = {
 "_edit_lock_": true
 }

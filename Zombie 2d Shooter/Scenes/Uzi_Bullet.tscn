@@ -19,3 +19,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+
+[node name="Vanish_Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Vanish_Timer" to="." method="_on_Vanish_Timer_timeout"]
