@@ -9,6 +9,7 @@ var direction := Vector2.ZERO
 
 func _ready():
 	vanish_timer.start()
+	
 func _physics_process(delta: float) -> void:
 	if direction !=  Vector2.ZERO:
 		var velocity = direction * speed

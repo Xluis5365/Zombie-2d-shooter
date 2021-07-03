@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+class_name gui
 
 onready var health_bar = $MarginContainer/Rows/BottomRow/CenterContainer/Healthbar
 onready var current_ammo = $"MarginContainer/Rows/BottomRow/AmmoSection/Current ammo"

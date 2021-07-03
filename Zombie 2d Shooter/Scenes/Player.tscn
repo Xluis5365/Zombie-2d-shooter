@@ -31,7 +31,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "reload"
 length = 0.2
 tracks/0/type = "value"
@@ -85,7 +85,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=4]
 flag_disable_z = true
 gravity = Vector3( 10, 0, 0 )
 initial_velocity = 8.0
@@ -160,7 +160,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Walking = SubResource( 2 )
-anims/reload = SubResource( 4 )
+anims/reload = SubResource( 3 )
 
 [node name="Uzi_gun_direction" type="Position2D" parent="."]
 position = Vector2( 51.3418, 8.18948 )
@@ -188,15 +188,16 @@ one_shot = true
 speed_scale = 10.28
 explosiveness = 0.09
 randomness = 0.25
-process_material = SubResource( 3 )
+process_material = SubResource( 4 )
 texture = ExtResource( 9 )
 
 [node name="Health" parent="." instance=ExtResource( 10 )]
-
-[node name="GUI" parent="." instance=ExtResource( 11 )]
+health = 75
 
 [node name="Healthtest" type="Timer" parent="."]
 wait_time = 5.0
-one_shot = true
+autostart = true
+
+[node name="GUI" parent="." instance=ExtResource( 11 )]
 
 [connection signal="timeout" from="Healthtest" to="." method="_on_Healthtest_timeout"]

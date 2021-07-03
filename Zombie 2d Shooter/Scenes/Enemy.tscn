@@ -146,6 +146,7 @@ shape = SubResource( 7 )
 "anims/pre enemy death" = SubResource( 8 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
+health = 200
 
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

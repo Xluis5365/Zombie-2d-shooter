@@ -51,8 +51,7 @@ func _physics_process(delta):
 	elif velocity < Vector2.ZERO:
 		ap.play("Walking")
 	
-	
-	
+
 	
 func get_input_axis():
 	var axis = Vector2.ZERO
@@ -126,6 +125,4 @@ func handle_reload():
 	pass
 
 
-func _on_Healthtest_timeout():
-	Health_stat.health -= 50
-	print("less health")
+

@@ -5,20 +5,36 @@ onready var ap = $AnimationPlayer
 
 onready var Health_stat = $Health
 
+onready var player = get_parent().get_node("Player")
+
+export var speed = 500
+var velocity = Vector2()
+
+
 enum {
 	IDLE,
 	ATTACK,
 	OUTOFSIGHT
 }
 
+var target :Vector2 = player.global_position
+
 var state = IDLE
 
-func _process(delta):
+func _physics_process(delta):
+	
+	
+	
+	
+	
+	
+	move_and_slide(velocity)
 	
 	match state:
 		IDLE:
 			print("idle")
 		ATTACK:
+			transform = player.global_position
 			print("attack")
 	
 
