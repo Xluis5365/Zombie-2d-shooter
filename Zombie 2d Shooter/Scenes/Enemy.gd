@@ -17,7 +17,7 @@ enum {
 	OUTOFSIGHT
 }
 
-var target :Vector2 = player.global_position
+#var target :Vector2 = player.global_position
 
 var state = IDLE
 
@@ -25,16 +25,14 @@ func _physics_process(delta):
 	
 	
 	
-	
-	
-	
+
 	move_and_slide(velocity)
 	
 	match state:
 		IDLE:
 			print("idle")
 		ATTACK:
-			transform = player.global_position
+			#transform = player.global_position
 			print("attack")
 	
 
