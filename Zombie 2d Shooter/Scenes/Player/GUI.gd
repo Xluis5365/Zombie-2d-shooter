@@ -12,7 +12,7 @@ onready var _max_ammo = $Marg/Rows/BottomRow/AmmoSection/MaxAmmo
 func set_info(p: KinematicBody2D):
 	_player = p
 
-	_set_new_health_value(p.health)
+	_health_bar.value = p.health
 	_set_current_ammo(p.cur_ammo)
 	_set_max_ammo(p.max_ammo)
 	
