@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
 
-
 [resource]
 size = 64
 outline_size = 1
