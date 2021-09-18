@@ -1,128 +1,85 @@
 extends KinematicBody2D
 class_name Player
 
+
 signal player_health_changed(new_health)
 signal player_fired(uzi_bullet, position, direction)
-
 signal weapon_ammo_changed(new_ammo_count)
 signal weapon_out_of_ammo
 
-var max_ammo = 30
-var current_ammo = max_ammo setget set_current_ammo
+export(int) var health := 100
+export(int) var max_ammo := 30
 
-onready var healthtest = $Healthtest
+export (PackedScene) var _uzi_bullet
+export(int) var _max_speed := 200
+export(int) var _accel := 1000
 
-onready var ap = $AnimationPlayer
+var cur_ammo := max_ammo
 
-onready var cooldown = $Cooldown
+var _velocity := Vector2()
+var _cur_weapon := 0
 
-onready var uzi = $Hand/Uzi
-onready var ak = $Hand/Ak
-onready var m4 = $Hand/M4A14
-onready var sniper = $Hand/Sniper
+onready var _ap := $AnimationPlayer
+onready var _uzi := $Hand/Uzi
+onready var _ak := $Hand/AK
+onready var _m4 := $Hand/M4A14
+onready var _sniper := $Hand/Sniper
+onready var _uzi_end := $Hand/BulletPoints/UziEnd
+onready var _uzi_dir := $UziDir
+onready var _cooldown := $Cooldown
+onready var _muzzle_flash := $MuzzleFlash
 
-onready var uzi_gun_direction = $Uzi_gun_direction
-onready var uzi_end_of_gun = $Hand/bulletpoints/uziendofgun
 
-export (PackedScene) var uzi_bullet
+func _ready() -> void:
+	$GUI.set_info(self)
 
-onready var Health_stat = $Health
-
-onready var muzzleflash = $Particles2D
-
-var speed = 10
-var max_speed = 200
-var ACCELERATION = 1000
-
-var current_weapon = 1
-
-var velocity = Vector2()
 
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
-	var axis = get_input_axis()
-	if axis == Vector2.ZERO:
-		apply_friction(ACCELERATION * delta)
-	else:
-		apply_movement(axis * ACCELERATION * delta)
-	velocity = move_and_slide(velocity)
-	if velocity > Vector2.ZERO:
-		ap.play("Walking")
-	elif velocity < Vector2.ZERO:
-		ap.play("Walking")
 	
-
-	
-func get_input_axis():
 	var axis = Vector2.ZERO
-	axis.x = int(Input.is_action_pressed("Right")) - int(Input.is_action_pressed("Left"))
-	axis.y = int(Input.is_action_pressed("Down")) - int(Input.is_action_pressed("Up"))
-	return axis.normalized()
-
-
-
-func apply_friction(amount):
-	if velocity.length() > amount:
-		velocity -= velocity.normalized() * amount
+	axis.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	axis.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	axis = axis.normalized()
+	
+	if axis == Vector2.ZERO:
+		_velocity = _velocity.move_toward(Vector2.ZERO, _accel * delta)
 	else:
-		velocity = Vector2.ZERO
+		_velocity = _velocity.move_toward(axis * _max_speed, _accel * delta)
+		_velocity = _velocity.clamped(_max_speed)
+	_velocity = move_and_slide(_velocity)
 
-func apply_movement(acceleration):
-	velocity += acceleration
-	velocity = velocity.clamped(max_speed)
-	if velocity.length() > max_speed:
-		velocity =  velocity.normalized() * max_speed
-
+	if not _velocity == Vector2.ZERO:
+		_ap.play("walk")
+	
+	
 func _unhandled_input(event):
-	if event.is_action_pressed("Shoot"):
-		shoot()
-	elif event.is_action_released("Shoot"):
-		shoot()
+	if event.is_action_pressed("shoot"):
+		_shoot()
 	elif event.is_action_released("reload"):
-		start_reload()
+		_start_reload()
 
-func start_reload():
-	ap.play("reload")
+
+func _shoot():
+	if cur_ammo != 0 and _cooldown.is_stopped():
+		_muzzle_flash.emitting = true
+		var uzi_bullet_instance = _uzi_bullet.instance()
+		var dir: Vector2 = _uzi_end.global_position.direction_to(_uzi_dir.global_position)
+		emit_signal("player_fired", uzi_bullet_instance, _uzi_end.global_position, dir)
+		_cooldown.start()
+		_set_current_ammo(cur_ammo - 1)
+
+
+func _set_current_ammo(new_ammo: int):
+	cur_ammo = clamp(new_ammo, 0, max_ammo)
+	if cur_ammo == 0:
+		emit_signal("weapon_out_of_ammo")
+	emit_signal("weapon_ammo_changed", cur_ammo)
+
+
+func _start_reload():
+	_ap.play("reload")
+
 
 func _stop_reload():
-	current_ammo = max_ammo
-	emit_signal("weapon_ammo_changed", current_ammo)
-
-
-
-
-func set_current_ammo(new_ammo: int):
-	var actual_ammo = clamp(new_ammo, 0, max_ammo)
-	if actual_ammo != current_ammo:
-		current_ammo = actual_ammo
-		if current_ammo == 0:
-			emit_signal("weapon_out_of_ammo")
-		emit_signal("weapon_ammo_changed", current_ammo)
-
-func shoot():
-	if current_ammo != 0 and cooldown.is_stopped():
-		muzzleflash.emitting = true
-		var uzi_bullet_instance = uzi_bullet.instance()
-		var direction = (uzi_gun_direction.global_position - uzi_end_of_gun.global_position).normalized()
-		emit_signal("player_fired", uzi_bullet_instance, uzi_end_of_gun.global_position, direction)
-		cooldown.start()
-		set_current_ammo(current_ammo - 1)
-
-		print(current_ammo)
-	else:
-		pass
-
-func handle_hit_by_enemy():
-	Health_stat.health -= 10
-	print("player_health_changed", Health_stat.health)
-
-
-func _ready():
-	healthtest.start()
-	connect("weapon_out_of_ammo", self, "handle_reload")
-
-func handle_reload():
-	pass
-
-func _on_Healthtest_timeout() -> void:
-	pass # Replace with function body.
+	_set_current_ammo(max_ammo)

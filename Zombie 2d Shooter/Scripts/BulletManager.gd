@@ -1,6 +1,7 @@
 extends Node2D
 
-func handle_bullet_spawned(uzi_bullet: uzi_bullet, position: Vector2, direction: Vector2):
-	add_child(uzi_bullet)
-	uzi_bullet.global_position = position
-	uzi_bullet.set_direction(direction)
+
+func handle_bullet_spawned(bullet: UziBullet, pos: Vector2, direction: Vector2):
+	add_child(bullet)
+	bullet.global_position = pos
+	bullet.set_direction(direction)

@@ -30,6 +30,13 @@ func _physics_process(delta):
 			pass
 
 
+func handle_hit_by_enemy() -> void:
+	_health -= 20
+	if _health <= 0:
+		_ap.play("die")
+		_state = _States.DEAD
+	
+	
 func _on_sight_body_entered(body: Node) -> void:
 	_player = body
 
@@ -43,3 +50,8 @@ func _on_sight_body_exited(_body: Node) -> void:
 func _on_attack_body_entered(body: Node) -> void:
 	_state = _States.ATTACK
 	_ap.play("walk")
+	
+	
+func _die() -> void:
+	queue_free()
+

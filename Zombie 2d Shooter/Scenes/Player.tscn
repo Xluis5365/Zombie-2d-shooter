@@ -1,35 +1,17 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://playerwithoutgunwithcamo (1).png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Uzi.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprites/playerwithoutgunwithcamoandwitharm.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/UziBullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Ak.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/M4A14.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Sniper.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Uzi_Bullet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sprites/White_Square.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Health.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.3841
-
-[sub_resource type="Animation" id=2]
-resource_name = "Walking"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2 ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "reload"
@@ -46,43 +28,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 83.4545, -3.1176 ), Vector2( 76.5249, -3.1176 ), Vector2( 83.4545, -3.1176 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite2:position")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite2:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -0.648042, 0.0 ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_stop_reload"
 } ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "walk"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
 }
 
 [sub_resource type="ParticlesMaterial" id=4]
@@ -100,13 +74,14 @@ color = Color( 1, 0.733333, 0, 1 )
 ]]
 collision_mask = 24
 script = ExtResource( 1 )
-uzi_bullet = ExtResource( 8 )
+_uzi_bullet = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1.26135, 5.88628 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 hframes = 3
+frame = 2
 
 [node name="Hand" type="Node2D" parent="."]
 position = Vector2( -40.0797, 7.11696 )
@@ -114,7 +89,7 @@ position = Vector2( -40.0797, 7.11696 )
 [node name="Uzi" parent="Hand" instance=ExtResource( 3 )]
 position = Vector2( 83.4545, -3.1176 )
 
-[node name="Ak" parent="Hand" instance=ExtResource( 5 )]
+[node name="AK" parent="Hand" instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 79.4103, 0.37458 )
 
@@ -126,44 +101,40 @@ position = Vector2( 83.5306, 0.374573 )
 visible = false
 position = Vector2( 88.7747, 1.49831 )
 
-[node name="bulletpoints" type="Node2D" parent="Hand"]
+[node name="BulletPoints" type="Node2D" parent="Hand"]
 
-[node name="uziendofgun" type="Position2D" parent="Hand/bulletpoints"]
+[node name="UziEnd" type="Position2D" parent="Hand/BulletPoints"]
 position = Vector2( 88.7668, 1.00113 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="akendofgun" type="Position2D" parent="Hand/bulletpoints"]
+[node name="AKEnd" type="Position2D" parent="Hand/BulletPoints"]
 position = Vector2( 105.452, 0.667419 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="m4endofgun" type="Position2D" parent="Hand/bulletpoints"]
+[node name="M4End" type="Position2D" parent="Hand/BulletPoints"]
 position = Vector2( 120.136, 0.33371 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="sniperendofgun" type="Position2D" parent="Hand/bulletpoints"]
+[node name="SniperEnd" type="Position2D" parent="Hand/BulletPoints"]
 position = Vector2( 134.151, 1.33484 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite2" type="Sprite" parent="."]
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 4 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Walking = SubResource( 2 )
 anims/reload = SubResource( 3 )
+anims/walk = SubResource( 2 )
 
-[node name="Uzi_gun_direction" type="Position2D" parent="."]
+[node name="UziDir" type="Position2D" parent="."]
 position = Vector2( 51.3418, 8.18948 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -180,7 +151,8 @@ __meta__ = {
 wait_time = 0.3
 one_shot = true
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="MuzzleFlash" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 49.6129, 8.82941 )
 emitting = false
 amount = 13
@@ -192,13 +164,4 @@ randomness = 0.25
 process_material = SubResource( 4 )
 texture = ExtResource( 9 )
 
-[node name="Health" parent="." instance=ExtResource( 10 )]
-health = 75
-
-[node name="Healthtest" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="GUI" parent="." instance=ExtResource( 11 )]
-
-[connection signal="timeout" from="Healthtest" to="." method="_on_Healthtest_timeout"]

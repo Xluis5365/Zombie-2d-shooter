@@ -23,7 +23,7 @@ border_color = Color( 1, 1, 1, 1 )
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Marg" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -32,23 +32,24 @@ custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 80
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Rows" type="VBoxContainer" parent="MarginContainer"]
+[node name="Rows" type="VBoxContainer" parent="Marg"]
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 1240.0
 margin_bottom = 640.0
 mouse_filter = 2
 
-[node name="TopRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+[node name="TopRow" type="HBoxContainer" parent="Marg/Rows"]
 margin_right = 1200.0
 margin_bottom = 92.0
 mouse_filter = 2
 size_flags_vertical = 3
 
-[node name="MidRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+[node name="MidRow" type="HBoxContainer" parent="Marg/Rows"]
 margin_top = 96.0
 margin_right = 1200.0
 margin_bottom = 464.0
@@ -56,19 +57,19 @@ mouse_filter = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
-[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+[node name="BottomRow" type="HBoxContainer" parent="Marg/Rows"]
 margin_top = 468.0
 margin_right = 1200.0
 margin_bottom = 599.0
 mouse_filter = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Rows/BottomRow"]
+[node name="Center" type="CenterContainer" parent="Marg/Rows/BottomRow"]
 margin_right = 600.0
 margin_bottom = 131.0
 mouse_filter = 2
 
-[node name="Healthbar" type="ProgressBar" parent="MarginContainer/Rows/BottomRow/CenterContainer"]
+[node name="HealthBar" type="ProgressBar" parent="Marg/Rows/BottomRow/Center"]
 margin_top = 40.0
 margin_right = 600.0
 margin_bottom = 90.0
@@ -77,13 +78,11 @@ mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = ExtResource( 1 )
-value = 75.0
+value = 100.0
 
-[node name="Tween" type="Tween" parent="MarginContainer/Rows/BottomRow/CenterContainer"]
+[node name="Tween" type="Tween" parent="Marg/Rows/BottomRow/Center"]
 
-[node name="AmmoSection" type="HBoxContainer" parent="MarginContainer/Rows/BottomRow"]
-anchor_top = 1.0
-anchor_bottom = 1.0
+[node name="AmmoSection" type="HBoxContainer" parent="Marg/Rows/BottomRow"]
 margin_left = 604.0
 margin_right = 1200.0
 margin_bottom = 131.0
@@ -93,7 +92,7 @@ mouse_filter = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="Current ammo" type="Label" parent="MarginContainer/Rows/BottomRow/AmmoSection"]
+[node name="CurAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
 margin_left = 384.0
 margin_right = 452.0
 margin_bottom = 131.0
@@ -104,7 +103,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="separator" type="Label" parent="MarginContainer/Rows/BottomRow/AmmoSection"]
+[node name="Separator" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
 margin_left = 456.0
 margin_right = 524.0
 margin_bottom = 131.0
@@ -115,7 +114,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Max ammo" type="Label" parent="MarginContainer/Rows/BottomRow/AmmoSection"]
+[node name="MaxAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
 margin_left = 528.0
 margin_right = 596.0
 margin_bottom = 131.0
