@@ -98,6 +98,7 @@ color = Color( 1, 0.733333, 0, 1 )
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
+collision_mask = 24
 script = ExtResource( 1 )
 uzi_bullet = ExtResource( 8 )
 

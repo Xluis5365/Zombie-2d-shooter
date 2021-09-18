@@ -124,5 +124,5 @@ func _ready():
 func handle_reload():
 	pass
 
-
-
+func _on_Healthtest_timeout() -> void:
+	pass # Replace with function body.

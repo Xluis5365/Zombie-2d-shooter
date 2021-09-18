@@ -95,7 +95,7 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[node name="Main World" type="Node2D"]
+[node name="MainWorld" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Ground" type="TileMap" parent="."]

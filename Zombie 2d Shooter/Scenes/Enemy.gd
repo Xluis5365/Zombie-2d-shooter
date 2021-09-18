@@ -1,53 +1,45 @@
 extends KinematicBody2D
 
-onready var timer = $Timer
-onready var ap = $AnimationPlayer
 
-onready var Health_stat = $Health
-
-onready var player = get_parent().get_node("Player")
-
-export var speed = 500
-var velocity = Vector2()
-
-
-enum {
+enum _States {
 	IDLE,
 	ATTACK,
-	OUTOFSIGHT
+	DEAD,
 }
 
-#var target :Vector2 = player.global_position
+export(int) var _speed := 100
+export(int) var _health := 60
 
-var state = IDLE
+var _velocity := Vector2()
+var _state = _States.IDLE
+var _player: KinematicBody2D
+
+onready var _timer = $Timer
+onready var _ap = $AnimationPlayer
+
 
 func _physics_process(delta):
-	
-	
-	
-
-	move_and_slide(velocity)
-	
-	match state:
-		IDLE:
-			print("idle")
-		ATTACK:
-			#transform = player.global_position
-			print("attack")
-	
-
-func _on_attack_body_entered(body):
-	if body.is_in_group("Player"):
-		state = ATTACK
+	match _state:
+		_States.IDLE:
+			pass
+		_States.ATTACK:
+			var dir := global_position.direction_to(_player.global_position)
+			_velocity = move_and_slide(dir * _speed)
+			look_at(_player.global_position)
+		_States.DEAD:
+			pass
 
 
+func _on_sight_body_entered(body: Node) -> void:
+	_player = body
 
-func _on_Sight_body_exited(body):
-	if body.is_in_group("Player"):
-		state = IDLE
 
-func handle_hit_by_enemy():
-	Health_stat.health -= 20
-	print("enemy hit", Health_stat.health)
-	if Health_stat.health <= 0:
-		queue_free()
+func _on_sight_body_exited(_body: Node) -> void:
+	_player = null
+	_state = _States.IDLE
+	_ap.stop()
+
+
+func _on_attack_body_entered(body: Node) -> void:
+	_state = _States.ATTACK
+	_ap.play("walk")
