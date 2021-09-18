@@ -80,7 +80,7 @@ radius = 21.0
 height = 4.0
 
 [node name="Enemy" type="KinematicBody2D"]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 96
 script = ExtResource( 2 )
 
@@ -96,14 +96,16 @@ rotation = 1.5708
 shape = SubResource( 7 )
 
 [node name="Attack" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 visible = false
 shape = SubResource( 2 )
 
 [node name="Sight" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
 visible = false
@@ -122,7 +124,6 @@ position = Vector2( 13, 0 )
 shape = SubResource( 6 )
 
 [node name="AttackTimer" type="Timer" parent="AttackBox"]
-wait_time = 0.4
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 8
@@ -134,5 +135,4 @@ shape = SubResource( 8 )
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]
-[connection signal="timeout" from="AttackBox/AttackTimer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

@@ -53,3 +53,4 @@ func _on_hurt_box_body_entered(body: Node) -> void:
 	if _health <= 0:
 		_ap.play("die")
 		_state = _States.DEAD
+	body.queue_free()

@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 83.4545, -3.1176 ), Vector2( 76.5249, -3.1176 ), Vector2( 83.4545, -3.1176 ) ]
+"values": [ Vector2( 83, -3 ), Vector2( 77, -3 ), Vector2( 83, -3 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -75,63 +75,64 @@ radius = 13.0
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
+collision_layer = 2
 collision_mask = 96
 script = ExtResource( 9 )
 _uzi_bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.26135, 5.88628 )
+position = Vector2( 17.2613, 5.88628 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 8 )
 hframes = 3
 frame = 2
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( -40.0797, 7.11696 )
+position = Vector2( -24, 7 )
 
 [node name="Uzi" parent="Hand" instance=ExtResource( 1 )]
-position = Vector2( 83.4545, -3.1176 )
+position = Vector2( 83, -3 )
 
 [node name="AK" parent="Hand" instance=ExtResource( 2 )]
 visible = false
-position = Vector2( 79.4103, 0.37458 )
+position = Vector2( 80, 0 )
 
 [node name="M4A14" parent="Hand" instance=ExtResource( 5 )]
 visible = false
-position = Vector2( 83.5306, 0.374573 )
+position = Vector2( 83, 0 )
 
 [node name="Sniper" parent="Hand" instance=ExtResource( 4 )]
 visible = false
-position = Vector2( 88.7747, 1.49831 )
+position = Vector2( 89, 1 )
 
 [node name="BulletPoints" type="Node2D" parent="Hand"]
 
 [node name="UziEnd" type="Position2D" parent="Hand/BulletPoints"]
-position = Vector2( 88.7668, 1.00113 )
+position = Vector2( 89, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="AKEnd" type="Position2D" parent="Hand/BulletPoints"]
-position = Vector2( 105.452, 0.667419 )
+position = Vector2( 105, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="M4End" type="Position2D" parent="Hand/BulletPoints"]
-position = Vector2( 120.136, 0.33371 )
+position = Vector2( 120, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="SniperEnd" type="Position2D" parent="Hand/BulletPoints"]
-position = Vector2( 134.151, 1.33484 )
+position = Vector2( 134, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -4, 0 )
+position = Vector2( 12, 0 )
 rotation = 1.5708
 shape = SubResource( 5 )
 
@@ -169,6 +170,7 @@ texture = ExtResource( 7 )
 [node name="GUI" parent="." instance=ExtResource( 6 )]
 
 [node name="HurtBox" type="Area2D" parent="."]
+position = Vector2( 16, 0 )
 collision_layer = 2
 collision_mask = 4
 
@@ -176,3 +178,9 @@ collision_mask = 4
 position = Vector2( -10, 0 )
 rotation = 1.5708
 shape = SubResource( 6 )
+
+[node name="Invincibility" type="Timer" parent="HurtBox"]
+one_shot = true
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered" flags=3]
+[connection signal="timeout" from="HurtBox/Invincibility" to="." method="_on_invincibility_timeout" flags=3]

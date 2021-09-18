@@ -56,13 +56,13 @@ func _unhandled_input(event):
 		_shoot()
 	elif event.is_action_released("reload"):
 		_start_reload()
-
+		
 
 func _shoot():
 	if cur_ammo != 0 and _cooldown.is_stopped():
 		_muzzle_flash.emitting = true
 		var uzi_bullet_instance = _uzi_bullet.instance()
-		var dir: Vector2 = $Hand.global_position.direction_to(_uzi_end.global_position)
+		var dir: Vector2 = Vector2.RIGHT.rotated(rotation)
 		emit_signal("player_fired", uzi_bullet_instance, _uzi_end.global_position, dir)
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)
@@ -82,3 +82,15 @@ func _start_reload():
 
 func _stop_reload():
 	_set_current_ammo(max_ammo)
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.name == "AttackBox":
+		health -= 1
+		emit_signal("player_health_changed", health)
+		$HurtBox/CollisionShape2D.disabled = true
+		$HurtBox/Invincibility.start()
+
+
+func _on_invincibility_timeout() -> void:
+	$HurtBox/CollisionShape2D.disabled = false
