@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "CanvasLayer",
 "class": "GUI",
 "language": "GDScript",
-"path": "res://Scripts/GUI.gd"
+"path": "res://Scenes/Player/GUI.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Scripts/Player.gd"
+"path": "res://Scenes/Player/Player.gd"
 }, {
 "base": "Area2D",
 "class": "UziBullet",
 "language": "GDScript",
-"path": "res://Scenes/UziBullet.gd"
+"path": "res://Scenes/Guns/UziBullet.gd"
 } ]
 _global_script_class_icons={
 "GUI": "",
@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Zombie 2d Shooter"
-run/main_scene="res://Scenes/MainWorld.tscn"
+run/main_scene="res://Scenes/World/MainWorld.tscn"
 config/icon="res://icon.png"
 
 [display]

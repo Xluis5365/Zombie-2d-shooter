@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/playerwithoutgunwithcamoandnoarm.png-10b5aca06ad6448e8dbff638cdcbd85e.stex"
+path="res://.import/Guns.png-62e044ce3da6301055746f63143162f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/playerwithoutgunwithcamoandnoarm.png"
-dest_files=[ "res://.import/playerwithoutgunwithcamoandnoarm.png-10b5aca06ad6448e8dbff638cdcbd85e.stex" ]
+source_file="res://Sprites/Guns.png"
+dest_files=[ "res://.import/Guns.png-62e044ce3da6301055746f63143162f4.stex" ]
 
 [params]
 

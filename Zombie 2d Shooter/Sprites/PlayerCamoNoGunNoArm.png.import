@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Uzi_bullet.png-ea49941c68539740e6e6f3be2c2d038f.stex"
+path="res://.import/PlayerCamoNoGunNoArm.png-be579da6b10e8484474ebb643928a701.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Uzi_bullet.png"
-dest_files=[ "res://.import/Uzi_bullet.png-ea49941c68539740e6e6f3be2c2d038f.stex" ]
+source_file="res://Sprites/PlayerCamoNoGunNoArm.png"
+dest_files=[ "res://.import/PlayerCamoNoGunNoArm.png-be579da6b10e8484474ebb643928a701.stex" ]
 
 [params]
 
