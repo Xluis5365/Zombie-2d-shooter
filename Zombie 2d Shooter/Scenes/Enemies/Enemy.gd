@@ -14,11 +14,10 @@ var _velocity := Vector2()
 var _state = _States.IDLE
 var _player: KinematicBody2D
 
-onready var _timer = $Timer
 onready var _ap = $AnimationPlayer
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match _state:
 		_States.IDLE:
 			pass
@@ -30,13 +29,6 @@ func _physics_process(delta):
 			pass
 
 
-func handle_hit_by_enemy() -> void:
-	_health -= 20
-	if _health <= 0:
-		_ap.play("die")
-		_state = _States.DEAD
-	
-	
 func _on_sight_body_entered(body: Node) -> void:
 	_player = body
 
@@ -47,7 +39,7 @@ func _on_sight_body_exited(_body: Node) -> void:
 	_ap.stop()
 
 
-func _on_attack_body_entered(body: Node) -> void:
+func _on_attack_body_entered(_body: Node) -> void:
 	_state = _States.ATTACK
 	_ap.play("walk")
 	
@@ -55,3 +47,9 @@ func _on_attack_body_entered(body: Node) -> void:
 func _die() -> void:
 	queue_free()
 
+
+func _on_hurt_box_body_entered(body: Node) -> void:
+	_health -= 20
+	if _health <= 0:
+		_ap.play("die")
+		_state = _States.DEAD

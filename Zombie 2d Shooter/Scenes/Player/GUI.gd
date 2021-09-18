@@ -1,8 +1,7 @@
 extends CanvasLayer
-class_name GUI
 
 
-var _player: Player
+var _player: KinematicBody2D
 
 onready var _health_bar = $Marg/Rows/BottomRow/Center/HealthBar
 onready var _health_tween = $Marg/Rows/BottomRow/Center/Tween
@@ -10,7 +9,7 @@ onready var _cur_ammo = $Marg/Rows/BottomRow/AmmoSection/CurAmmo
 onready var _max_ammo = $Marg/Rows/BottomRow/AmmoSection/MaxAmmo
 
 
-func set_info(p: Player):
+func set_info(p: KinematicBody2D):
 	_player = p
 
 	_set_new_health_value(p.health)

@@ -9,6 +9,6 @@ func _ready() -> void:
 	_player.connect("player_fired", _bullet_manager, "handle_bullet_spawned")
 
 
-func _input(event):
-	if Input.is_action_pressed("ui_cancel"):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()

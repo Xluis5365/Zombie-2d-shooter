@@ -1,5 +1,4 @@
 extends KinematicBody2D
-class_name Player
 
 
 signal player_health_changed(new_health)
@@ -10,7 +9,7 @@ signal weapon_out_of_ammo
 export(int) var health := 100
 export(int) var max_ammo := 30
 
-export (PackedScene) var _uzi_bullet
+export (PackedScene) var _uzi_bullet: PackedScene
 export(int) var _max_speed := 200
 export(int) var _accel := 1000
 
@@ -25,7 +24,6 @@ onready var _ak := $Hand/AK
 onready var _m4 := $Hand/M4A14
 onready var _sniper := $Hand/Sniper
 onready var _uzi_end := $Hand/BulletPoints/UziEnd
-onready var _uzi_dir := $UziDir
 onready var _cooldown := $Cooldown
 onready var _muzzle_flash := $MuzzleFlash
 
@@ -64,13 +62,14 @@ func _shoot():
 	if cur_ammo != 0 and _cooldown.is_stopped():
 		_muzzle_flash.emitting = true
 		var uzi_bullet_instance = _uzi_bullet.instance()
-		var dir: Vector2 = _uzi_end.global_position.direction_to(_uzi_dir.global_position)
+		var dir: Vector2 = $Hand.global_position.direction_to(_uzi_end.global_position)
 		emit_signal("player_fired", uzi_bullet_instance, _uzi_end.global_position, dir)
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)
 
 
 func _set_current_ammo(new_ammo: int):
+# warning-ignore:narrowing_conversion
 	cur_ammo = clamp(new_ammo, 0, max_ammo)
 	if cur_ammo == 0:
 		emit_signal("weapon_out_of_ammo")

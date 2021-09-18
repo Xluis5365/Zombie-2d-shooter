@@ -8,33 +8,15 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "CanvasLayer",
-"class": "GUI",
-"language": "GDScript",
-"path": "res://Scenes/Player/GUI.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Scenes/Player/Player.gd"
-}, {
-"base": "Area2D",
-"class": "UziBullet",
-"language": "GDScript",
-"path": "res://Scenes/Guns/UziBullet.gd"
-} ]
-_global_script_class_icons={
-"GUI": "",
-"Player": "",
-"UziBullet": ""
-}
-
 [application]
 
 config/name="Zombie 2d Shooter"
 run/main_scene="res://Scenes/World/MainWorld.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
@@ -109,15 +91,17 @@ reload={
 [layer_names]
 
 2d_render/layer_1="Player"
-2d_physics/layer_1="Player"
+2d_physics/layer_1="player_attack"
 2d_render/layer_2="Enemy"
-2d_physics/layer_2="Enemy"
+2d_physics/layer_2="player_hurt"
 2d_render/layer_3="Items"
-2d_physics/layer_3="Items"
+2d_physics/layer_3="enemy_attack"
 2d_render/layer_4="Obstacles"
-2d_physics/layer_4="Obstacles"
+2d_physics/layer_4="enemy_hurt"
 2d_render/layer_5="World"
-2d_physics/layer_5="World"
+2d_physics/layer_5="items"
+2d_physics/layer_6="obstacles"
+2d_physics/layer_7="world"
 
 [physics]
 
