@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var _speed = 400
+export var _speed = 800
 
 var _dir := Vector2.ZERO
 
