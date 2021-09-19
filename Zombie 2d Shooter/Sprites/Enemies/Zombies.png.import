@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grass.png-26c6f9742a5ae2a629603d35d3e20fc3.stex"
+path="res://.import/Zombies.png-8b322b5c9b3b636fdfdb05e903a6a220.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Grass.png"
-dest_files=[ "res://.import/Grass.png-26c6f9742a5ae2a629603d35d3e20fc3.stex" ]
+source_file="res://Sprites/Enemies/Zombies.png"
+dest_files=[ "res://.import/Zombies.png-8b322b5c9b3b636fdfdb05e903a6a220.stex" ]
 
 [params]
 

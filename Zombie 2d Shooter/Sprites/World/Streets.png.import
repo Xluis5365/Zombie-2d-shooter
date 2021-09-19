@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerCamoNoGunNoArm.png-be579da6b10e8484474ebb643928a701.stex"
+path="res://.import/Streets.png-d6bb969d4c1e29f425f51ca9bce59cbe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PlayerCamoNoGunNoArm.png"
-dest_files=[ "res://.import/PlayerCamoNoGunNoArm.png-be579da6b10e8484474ebb643928a701.stex" ]
+source_file="res://Sprites/World/Streets.png"
+dest_files=[ "res://.import/Streets.png-d6bb969d4c1e29f425f51ca9bce59cbe.stex" ]
 
 [params]
 

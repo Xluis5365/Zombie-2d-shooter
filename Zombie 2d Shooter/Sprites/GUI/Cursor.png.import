@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Streets.png-5e8d94f0486d7aa84c218cfc347fa509.stex"
+path="res://.import/Cursor.png-bcb27e602aa6788dd877350aa8c3c865.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Streets.png"
-dest_files=[ "res://.import/Streets.png-5e8d94f0486d7aa84c218cfc347fa509.stex" ]
+source_file="res://Sprites/GUI/Cursor.png"
+dest_files=[ "res://.import/Cursor.png-bcb27e602aa6788dd877350aa8c3c865.stex" ]
 
 [params]
 

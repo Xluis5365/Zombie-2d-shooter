@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Guns.png-62e044ce3da6301055746f63143162f4.stex"
+path="res://.import/WhiteSquare.png-dba530fa8f608c1c7253c84e63fdff3a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Guns.png"
-dest_files=[ "res://.import/Guns.png-62e044ce3da6301055746f63143162f4.stex" ]
+source_file="res://Sprites/World/WhiteSquare.png"
+dest_files=[ "res://.import/WhiteSquare.png-dba530fa8f608c1c7253c84e63fdff3a.stex" ]
 
 [params]
 

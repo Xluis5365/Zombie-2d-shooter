@@ -5,6 +5,7 @@ signal player_health_changed(new_health)
 signal player_fired(uzi_bullet, position, direction)
 signal weapon_ammo_changed(new_ammo_count)
 signal weapon_out_of_ammo
+signal item_picked_up(item)
 
 export(int) var health := 100
 export(int) var max_ammo := 30
@@ -29,7 +30,7 @@ onready var _muzzle_flash := $MuzzleFlash
 
 
 func _ready() -> void:
-	$GUI.set_info(self)
+	$ItemPickup/PressE.set_as_toplevel(true)
 
 
 func _physics_process(delta):
@@ -50,12 +51,18 @@ func _physics_process(delta):
 	if not _velocity == Vector2.ZERO:
 		_ap.play("walk")
 	
+	$ItemPickup/PressE.rect_position = position + Vector2(-19, -43)
+	
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
 		_shoot()
 	elif event.is_action_released("reload"):
 		_start_reload()
+	elif event.is_action_pressed("pickup"):
+		for item in $ItemPickup.get_overlapping_areas():
+			emit_signal("item_picked_up", item)
+			$ItemPickup/PressE.hide()
 		
 
 func _shoot():
@@ -94,3 +101,12 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 
 func _on_invincibility_timeout() -> void:
 	$HurtBox/CollisionShape2D.disabled = false
+
+
+func _on_item_pickup_area_entered(_area: Area2D) -> void:
+	$ItemPickup/PressE.show()
+
+
+func _on_item_pickup_area_exited(_area: Area2D) -> void:
+	if $ItemPickup.get_overlapping_areas().size() == 0:
+		$ItemPickup/PressE.hide()

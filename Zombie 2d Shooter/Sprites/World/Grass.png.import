@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UziBullet.png-17eef6d8ed9a5694bab0c2f9733261f1.stex"
+path="res://.import/Grass.png-5a35d267f3eaf65cbb0e3a38b31e2582.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UziBullet.png"
-dest_files=[ "res://.import/UziBullet.png-17eef6d8ed9a5694bab0c2f9733261f1.stex" ]
+source_file="res://Sprites/World/Grass.png"
+dest_files=[ "res://.import/Grass.png-5a35d267f3eaf65cbb0e3a38b31e2582.stex" ]
 
 [params]
 

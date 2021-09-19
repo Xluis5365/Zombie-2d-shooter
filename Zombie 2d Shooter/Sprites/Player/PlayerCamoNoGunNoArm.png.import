@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GrassCornerDirt.png-7261862b0846fa5fe301580cb3014cb5.stex"
+path="res://.import/PlayerCamoNoGunNoArm.png-2a2d3e23d4a424fa6695964a0c43dcfe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/GrassCornerDirt.png"
-dest_files=[ "res://.import/GrassCornerDirt.png-7261862b0846fa5fe301580cb3014cb5.stex" ]
+source_file="res://Sprites/Player/PlayerCamoNoGunNoArm.png"
+dest_files=[ "res://.import/PlayerCamoNoGunNoArm.png-2a2d3e23d4a424fa6695964a0c43dcfe.stex" ]
 
 [params]
 

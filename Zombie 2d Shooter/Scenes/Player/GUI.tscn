@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/CurAmmoFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/Player/GUI.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/GUI/Pause.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/GUI/InvBox.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )
@@ -48,11 +50,58 @@ margin_right = 1240.0
 margin_bottom = 640.0
 mouse_filter = 2
 
-[node name="TopRow" type="HBoxContainer" parent="Marg/Rows"]
+[node name="Inventory" type="HBoxContainer" parent="Marg/Rows"]
 margin_right = 1200.0
 margin_bottom = 92.0
 mouse_filter = 2
 size_flags_vertical = 3
+
+[node name="Slot0" type="TextureButton" parent="Marg/Rows/Inventory"]
+margin_right = 64.0
+margin_bottom = 92.0
+texture_normal = ExtResource( 5 )
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Marg/Rows/Inventory/Slot0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="TextureButton" parent="Marg/Rows/Inventory"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 92.0
+texture_normal = ExtResource( 5 )
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Marg/Rows/Inventory/Slot1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="TextureButton" parent="Marg/Rows/Inventory"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 92.0
+texture_normal = ExtResource( 5 )
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Marg/Rows/Inventory/Slot2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MidRow" type="HBoxContainer" parent="Marg/Rows"]
 margin_top = 96.0
@@ -69,8 +118,17 @@ margin_bottom = 599.0
 mouse_filter = 2
 size_flags_vertical = 3
 
+[node name="Pause" type="TextureButton" parent="Marg/Rows/BottomRow"]
+margin_top = 49.0
+margin_right = 32.0
+margin_bottom = 81.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 4 )
+stretch_mode = 2
+
 [node name="Center" type="CenterContainer" parent="Marg/Rows/BottomRow"]
-margin_right = 600.0
+margin_left = 36.0
+margin_right = 636.0
 margin_bottom = 131.0
 mouse_filter = 2
 
@@ -88,7 +146,7 @@ value = 100.0
 [node name="Tween" type="Tween" parent="Marg/Rows/BottomRow/Center"]
 
 [node name="AmmoSection" type="HBoxContainer" parent="Marg/Rows/BottomRow"]
-margin_left = 604.0
+margin_left = 640.0
 margin_right = 1200.0
 margin_bottom = 131.0
 grow_horizontal = 2
@@ -98,8 +156,8 @@ size_flags_horizontal = 3
 alignment = 2
 
 [node name="CurAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 384.0
-margin_right = 452.0
+margin_left = 348.0
+margin_right = 416.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = "30
@@ -109,8 +167,8 @@ __meta__ = {
 }
 
 [node name="Separator" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 456.0
-margin_right = 524.0
+margin_left = 420.0
+margin_right = 488.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = " / 
@@ -120,8 +178,8 @@ __meta__ = {
 }
 
 [node name="MaxAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 528.0
-margin_right = 596.0
+margin_left = 492.0
+margin_right = 560.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = "30
@@ -129,3 +187,55 @@ text = "30
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PausePop" type="PopupPanel" parent="."]
+pause_mode = 2
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 640, 360 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePop"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PausePop/VBoxContainer"]
+margin_top = 137.0
+margin_right = 640.0
+margin_bottom = 151.0
+text = "Paused"
+align = 1
+
+[node name="Resume" type="Button" parent="PausePop/VBoxContainer"]
+margin_top = 155.0
+margin_right = 640.0
+margin_bottom = 175.0
+text = "Resume"
+
+[node name="TitleScreen" type="Button" parent="PausePop/VBoxContainer"]
+margin_top = 179.0
+margin_right = 640.0
+margin_bottom = 199.0
+text = "Title Screen"
+
+[node name="Quit" type="Button" parent="PausePop/VBoxContainer"]
+margin_top = 203.0
+margin_right = 640.0
+margin_bottom = 223.0
+text = "Quit"
+
+[connection signal="pressed" from="Marg/Rows/BottomRow/Pause" to="." method="_on_pause_pressed"]
+[connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
+[connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PausePop/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

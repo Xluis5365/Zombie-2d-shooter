@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerCamoNoGun.png-4289516b1e990031f6e1bf95a759d9b8.stex"
+path="res://.import/InvBox.png-e09664f29797794f7a6b7e335929a13e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PlayerCamoNoGun.png"
-dest_files=[ "res://.import/PlayerCamoNoGun.png-4289516b1e990031f6e1bf95a759d9b8.stex" ]
+source_file="res://Sprites/GUI/InvBox.png"
+dest_files=[ "res://.import/InvBox.png-e09664f29797794f7a6b7e335929a13e.stex" ]
 
 [params]
 

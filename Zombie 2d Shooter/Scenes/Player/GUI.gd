@@ -2,11 +2,18 @@ extends CanvasLayer
 
 
 var _player: KinematicBody2D
+var _slots := PoolStringArray()
 
 onready var _health_bar = $Marg/Rows/BottomRow/Center/HealthBar
 onready var _health_tween = $Marg/Rows/BottomRow/Center/Tween
 onready var _cur_ammo = $Marg/Rows/BottomRow/AmmoSection/CurAmmo
 onready var _max_ammo = $Marg/Rows/BottomRow/AmmoSection/MaxAmmo
+
+
+func _ready() -> void:
+	for slot in $Marg/Rows/Inventory.get_children():
+		_slots.append("")
+		slot.connect("pressed", self, "_on_inv_item_pressed", [slot.get_index()])
 
 
 func set_info(p: KinematicBody2D):
@@ -18,6 +25,7 @@ func set_info(p: KinematicBody2D):
 	
 	_player.connect("player_health_changed", self, "_set_new_health_value")
 	_player.connect("weapon_ammo_changed", self, "_set_current_ammo")
+	_player.connect("item_picked_up", self, "_on_item_picked_up")
 	
 	
 func _set_new_health_value(new_health: int):
@@ -36,3 +44,37 @@ func _set_current_ammo(new_ammo: int):
 	
 func _set_max_ammo(new_max_ammo: int):
 	_max_ammo.text = str(new_max_ammo)
+	
+
+func _on_item_picked_up(item: Area2D) -> void:
+	for i in _slots.size():
+		if _slots[i] == "":
+			_slots[i] = item.id
+			$Marg/Rows/Inventory.get_child(i).get_child(0).texture = item.get_node("Sprite").texture
+			break
+	item.queue_free()
+
+func _on_inv_item_pressed(i: int) -> void:
+	match _slots[i]:
+		"Health":
+			_player.health = 100
+			_set_new_health_value(100)
+			_slots[i] = ""
+			$Marg/Rows/Inventory.get_child(i).get_child(0).texture = null
+	
+	
+func _on_pause_pressed() -> void:
+	$PausePop.popup_centered()
+	get_tree().paused = true
+
+
+func _on_pause_pop_popup_hide() -> void:
+	get_tree().paused = false
+
+
+func _on_resume_pressed() -> void:
+	$PausePop.hide()
+
+
+func _on_quit_pressed() -> void:
+	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)

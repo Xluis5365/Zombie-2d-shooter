@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerCamoArm.png-06d35dabd9a790007c7e5ab0a47c5f68.stex"
+path="res://.import/Guns.png-6d97ee201d4b21d475577fde9949cb72.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PlayerCamoArm.png"
-dest_files=[ "res://.import/PlayerCamoArm.png-06d35dabd9a790007c7e5ab0a47c5f68.stex" ]
+source_file="res://Sprites/Guns/Guns.png"
+dest_files=[ "res://.import/Guns.png-6d97ee201d4b21d475577fde9949cb72.stex" ]
 
 [params]
 
