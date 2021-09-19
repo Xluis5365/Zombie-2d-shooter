@@ -8,8 +8,8 @@ enum {
 	SUNRISE,
 }
 
-const _DAY_TIME := 600.0
-const _TRANSITION := 60.0
+const _DAY_TIME := 60.0
+const _TRANSITION := 6.0
 const _SUNSET_COLOR := Color("ae9050")
 const _NIGHT_COLOR := Color("47476a")
 

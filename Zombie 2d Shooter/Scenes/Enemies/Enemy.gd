@@ -14,6 +14,7 @@ var _velocity := Vector2()
 var _state = _States.IDLE
 var _player: KinematicBody2D
 
+onready var Hurt_sound = $Hurt_sound
 onready var _ap = $AnimationPlayer
 
 
@@ -50,6 +51,7 @@ func _die() -> void:
 
 func _on_hurt_box_body_entered(body: Node) -> void:
 	if body.is_in_group("bullet"):
+		Hurt_sound.playing = true
 		_health -= 20
 		if _health <= 0:
 			_ap.play("die")

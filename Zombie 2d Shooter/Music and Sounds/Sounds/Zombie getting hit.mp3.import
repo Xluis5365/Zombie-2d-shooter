@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Zombie getting hit.mp3-faac3515cb22ea85a2bc776604a5b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -112,6 +112,12 @@ tile_data = PoolIntArray( -851958, 0, 0, -851957, 0, 1, -851956, 0, 1, -851955, 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1278.09, 634.914 )
 
+[node name="Enemy3" parent="." instance=ExtResource( 7 )]
+position = Vector2( -262.17, 1141.34 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 7 )]
+position = Vector2( -444.317, -689.999 )
+
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
 [node name="Music" type="Node2D" parent="Player"]
