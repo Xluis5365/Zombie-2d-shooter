@@ -148,5 +148,8 @@ position = Vector2( 116, 164 )
 [node name="Bullets" parent="Items" instance=ExtResource( 12 )]
 position = Vector2( 321, 78 )
 
+[node name="Bullets5" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 431.875, 1229.9 )
+
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

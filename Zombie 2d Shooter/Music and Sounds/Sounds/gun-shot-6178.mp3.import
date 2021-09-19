@@ -11,5 +11,5 @@ dest_files=[ "res://.import/gun-shot-6178.mp3-8809ae900fcbf16c5b85c814cf1a3dc0.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
