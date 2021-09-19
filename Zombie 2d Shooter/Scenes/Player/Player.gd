@@ -93,7 +93,7 @@ func _stop_reload():
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "AttackBox":
-		health -= 1
+		health -= 10
 		emit_signal("player_health_changed", health)
 		$HurtBox/CollisionShape2D.disabled = true
 		$HurtBox/Invincibility.start()

@@ -184,7 +184,17 @@ position = Vector2( 1278.09, 634.914 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
-[node name="GUI" parent="." instance=ExtResource( 9 )]
-
 [node name="Health" parent="." instance=ExtResource( 2 )]
 position = Vector2( 131, 89 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GUI" parent="." instance=ExtResource( 9 )]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
