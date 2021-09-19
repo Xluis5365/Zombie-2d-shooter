@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/World/MainWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Items/Health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Music and Sounds/Music/Sad_Cinematic.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sprites/World/Streets.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=7]
@@ -112,6 +113,12 @@ tile_data = PoolIntArray( -851958, 0, 0, -851957, 0, 1, -851956, 0, 1, -851955, 
 position = Vector2( 1278.09, 634.914 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
+
+[node name="Music" type="Node2D" parent="Player"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player/Music"]
+stream = ExtResource( 3 )
+autoplay = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
