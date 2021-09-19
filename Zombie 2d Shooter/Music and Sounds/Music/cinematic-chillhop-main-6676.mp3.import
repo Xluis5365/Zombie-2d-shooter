@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cinematic-chillhop-main-6676.mp3-c6b153061f6c434bee45df83b114702f.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Music/cinematic-chillhop-main-6676.mp3"
+dest_files=[ "res://.import/cinematic-chillhop-main-6676.mp3-c6b153061f6c434bee45df83b114702f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
