@@ -15,6 +15,7 @@ export(int) var _max_speed := 200
 export(int) var _accel := 1000
 
 var cur_ammo := max_ammo
+var gui: CanvasLayer
 
 var _velocity := Vector2()
 var _cur_weapon := 0
@@ -62,7 +63,9 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("pickup"):
 		for item in $ItemPickup.get_overlapping_areas():
 			emit_signal("item_picked_up", item)
-			$ItemPickup/PressE.hide()
+			yield(get_tree(), "idle_frame")
+			if $ItemPickup.get_overlapping_areas().size() == 0:
+				$ItemPickup/PressE.hide()
 		
 
 func _shoot():
@@ -84,7 +87,9 @@ func _set_current_ammo(new_ammo: int):
 
 
 func _start_reload():
-	_ap.play("reload")
+	if "Bullets" in gui.slots:
+		_ap.play("reload")
+		gui.remove_item(gui.slots.find("Bullets"))
 
 
 func _stop_reload():
