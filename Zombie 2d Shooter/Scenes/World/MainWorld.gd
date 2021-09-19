@@ -23,6 +23,7 @@ func _ready() -> void:
 	$GUI.set_info(_player)
 	$Timer.wait_time = _DAY_TIME
 	$Timer.start()
+	_player.gui = $GUI
 
 
 func _input(event: InputEvent) -> void:
