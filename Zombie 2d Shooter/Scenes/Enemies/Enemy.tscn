@@ -3,9 +3,7 @@
 [ext_resource path="res://Sprites/Zombies.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemies/Enemy.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 21.0
-height = 4.0
+[sub_resource type="CapsuleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 500.0
@@ -75,13 +73,13 @@ tracks/0/keys = {
 radius = 13.0883
 height = 17.9837
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 21.0
 height = 4.0
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 8
-collision_mask = 96
+collision_mask = 98
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -92,8 +90,8 @@ vframes = 3
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource( 7 )
+position = Vector2( -11, 0 )
+shape = SubResource( 1 )
 
 [node name="Attack" type="Area2D" parent="."]
 collision_layer = 8
@@ -130,7 +128,7 @@ collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 rotation = 1.5708
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]

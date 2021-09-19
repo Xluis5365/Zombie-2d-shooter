@@ -49,8 +49,9 @@ func _die() -> void:
 
 
 func _on_hurt_box_body_entered(body: Node) -> void:
-	_health -= 20
-	if _health <= 0:
-		_ap.play("die")
-		_state = _States.DEAD
-	body.queue_free()
+	if body.is_in_group("bullet"):
+		_health -= 20
+		if _health <= 0:
+			_ap.play("die")
+			_state = _States.DEAD
+		body.queue_free()

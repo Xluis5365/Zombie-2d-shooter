@@ -7,7 +7,9 @@
 radius = 7.12597
 height = 13.2564
 
-[node name="UziBullet" type="KinematicBody2D"]
+[node name="UziBullet" type="KinematicBody2D" groups=[
+"bullet",
+]]
 rotation = 1.5708
 scale = Vector2( 0.3, 0.4 )
 collision_mask = 48

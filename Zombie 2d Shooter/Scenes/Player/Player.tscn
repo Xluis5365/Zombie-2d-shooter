@@ -10,7 +10,7 @@
 [ext_resource path="res://Sprites/PlayerCamoNoGun.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=9]
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 17.0
 height = 42.0
 
@@ -69,14 +69,14 @@ orbit_velocity_random = 0.0
 scale = 0.1
 color = Color( 1, 0.733333, 0, 1 )
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 13.0
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
 collision_layer = 2
-collision_mask = 96
+collision_mask = 104
 script = ExtResource( 9 )
 _uzi_bullet = ExtResource( 3 )
 
@@ -134,7 +134,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 12, 0 )
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/reload = SubResource( 2 )
@@ -177,7 +177,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2( -10, 0 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Invincibility" type="Timer" parent="HurtBox"]
 one_shot = true
