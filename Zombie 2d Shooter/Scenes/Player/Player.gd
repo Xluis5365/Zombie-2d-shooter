@@ -19,6 +19,7 @@ var gui: CanvasLayer
 
 var _velocity := Vector2()
 var _cur_weapon := 0
+var _reloading := false
 
 onready var _ap := $AnimationPlayer
 onready var _uzi := $Hand/Uzi
@@ -48,9 +49,12 @@ func _physics_process(delta):
 		_velocity = _velocity.move_toward(axis * _max_speed, _accel * delta)
 		_velocity = _velocity.clamped(_max_speed)
 	_velocity = move_and_slide(_velocity)
-
-	if not _velocity == Vector2.ZERO:
-		_ap.play("walk")
+	
+	if not _reloading:
+		if not _velocity == Vector2.ZERO:
+			_ap.play("walk")
+		else:
+			_ap.stop()
 	
 	$ItemPickup/PressE.rect_position = position + Vector2(-101, -103)
 	
@@ -69,7 +73,7 @@ func _unhandled_input(event):
 		
 
 func _shoot():
-	if cur_ammo != 0 and _cooldown.is_stopped():
+	if not cur_ammo == 0 and _cooldown.is_stopped():
 		_muzzle_flash.emitting = true
 		var uzi_bullet_instance = _uzi_bullet.instance()
 		var dir: Vector2 = Vector2.RIGHT.rotated(rotation)
@@ -87,13 +91,15 @@ func _set_current_ammo(new_ammo: int):
 
 
 func _start_reload():
-	if "Bullets" in gui.slots:
+	if "Bullets" in gui.slots and not cur_ammo == max_ammo:
 		_ap.play("reload")
 		gui.remove_item(gui.slots.find("Bullets"))
+		_reloading = true
 
 
 func _stop_reload():
 	_set_current_ammo(max_ammo)
+	_reloading = false
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:

@@ -11,7 +11,7 @@
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 17.0
+radius = 25.9999
 height = 42.0
 
 [sub_resource type="Animation" id=2]
@@ -70,7 +70,8 @@ scale = 0.1
 color = Color( 1, 0.733333, 0, 1 )
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 13.0
+radius = 44.0
+height = 0.0
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 44.0114
@@ -88,7 +89,6 @@ position = Vector2( 17.2613, 5.88628 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 8 )
 hframes = 3
-frame = 2
 
 [node name="Hand" type="Node2D" parent="."]
 position = Vector2( -24, 7 )
@@ -158,8 +158,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="MuzzleFlash" type="Particles2D" parent="."]
-visible = false
-position = Vector2( 49.6129, 8.82941 )
+position = Vector2( 63, 8 )
 emitting = false
 amount = 13
 lifetime = 0.5

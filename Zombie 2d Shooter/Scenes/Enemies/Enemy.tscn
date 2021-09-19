@@ -4,6 +4,8 @@
 [ext_resource path="res://Scenes/Enemies/Enemy.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 22.0
+height = 14.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 500.0
@@ -70,7 +72,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 13.0883
+radius = 21.0
 height = 17.9837
 
 [sub_resource type="CapsuleShape2D" id=7]
@@ -79,7 +81,7 @@ height = 4.0
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 8
-collision_mask = 98
+collision_mask = 106
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -90,7 +92,8 @@ vframes = 3
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -11, 0 )
+position = Vector2( 3, 0 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Attack" type="Area2D" parent="."]
