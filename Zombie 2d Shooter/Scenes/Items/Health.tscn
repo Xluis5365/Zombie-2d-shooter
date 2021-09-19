@@ -10,7 +10,6 @@ radius = 27.0185
 id = "Health"
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]

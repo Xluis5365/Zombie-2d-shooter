@@ -103,6 +103,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pause" type="TextureButton" parent="Marg/Rows/Inventory"]
+margin_left = 1168.0
+margin_top = 30.0
+margin_right = 1200.0
+margin_bottom = 62.0
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource( 4 )
+stretch_mode = 2
+
 [node name="MidRow" type="HBoxContainer" parent="Marg/Rows"]
 margin_top = 96.0
 margin_right = 1200.0
@@ -118,17 +128,8 @@ margin_bottom = 599.0
 mouse_filter = 2
 size_flags_vertical = 3
 
-[node name="Pause" type="TextureButton" parent="Marg/Rows/BottomRow"]
-margin_top = 49.0
-margin_right = 32.0
-margin_bottom = 81.0
-size_flags_vertical = 4
-texture_normal = ExtResource( 4 )
-stretch_mode = 2
-
 [node name="Center" type="CenterContainer" parent="Marg/Rows/BottomRow"]
-margin_left = 36.0
-margin_right = 636.0
+margin_right = 600.0
 margin_bottom = 131.0
 mouse_filter = 2
 
@@ -146,7 +147,7 @@ value = 100.0
 [node name="Tween" type="Tween" parent="Marg/Rows/BottomRow/Center"]
 
 [node name="AmmoSection" type="HBoxContainer" parent="Marg/Rows/BottomRow"]
-margin_left = 640.0
+margin_left = 604.0
 margin_right = 1200.0
 margin_bottom = 131.0
 grow_horizontal = 2
@@ -156,8 +157,8 @@ size_flags_horizontal = 3
 alignment = 2
 
 [node name="CurAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 348.0
-margin_right = 416.0
+margin_left = 384.0
+margin_right = 452.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = "30
@@ -167,8 +168,8 @@ __meta__ = {
 }
 
 [node name="Separator" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 420.0
-margin_right = 488.0
+margin_left = 456.0
+margin_right = 524.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = " / 
@@ -178,8 +179,8 @@ __meta__ = {
 }
 
 [node name="MaxAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 492.0
-margin_right = 560.0
+margin_left = 528.0
+margin_right = 596.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = "30
@@ -235,7 +236,7 @@ margin_right = 640.0
 margin_bottom = 223.0
 text = "Quit"
 
-[connection signal="pressed" from="Marg/Rows/BottomRow/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Marg/Rows/Inventory/Pause" to="." method="_on_pause_pressed"]
 [connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
