@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+[gd_scene load_steps=16 format=2]
+=======
 [gd_scene load_steps=15 format=2]
+>>>>>>> Main
 
 [ext_resource path="res://Scenes/World/MainWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Items/Health.tscn" type="PackedScene" id=2]
@@ -9,7 +13,12 @@
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/World/GrassTile.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Player/GUI.tscn" type="PackedScene" id=9]
+<<<<<<< HEAD
+[ext_resource path="res://Sprites/World/light.png" type="Texture" id=10]
+[ext_resource path="res://default_env.tres" type="Environment" id=11]
+=======
 [ext_resource path="res://Scenes/Items/Bullets.tscn" type="PackedScene" id=10]
+>>>>>>> Main
 
 [sub_resource type="TileSet" id=1]
 1/name = "Grasstile.png 1"
@@ -194,6 +203,17 @@ one_shot = true
 
 [node name="GUI" parent="." instance=ExtResource( 9 )]
 
+<<<<<<< HEAD
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 542, -30 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 10 )
+energy = 0.5
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 11 )
+=======
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Health" parent="Items" instance=ExtResource( 2 )]
@@ -201,6 +221,7 @@ position = Vector2( 131, 89 )
 
 [node name="Bullets" parent="Items" instance=ExtResource( 10 )]
 position = Vector2( 252, 86 )
+>>>>>>> Main
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
