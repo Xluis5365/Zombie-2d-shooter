@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Guns/Uzi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Guns/AK.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Guns/UziBullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Guns/Sniper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Guns/M4A14.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/CurAmmoFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Sprites/World/WhiteSquare.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Player/PlayerCamoNoGun.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=9]
@@ -192,10 +193,11 @@ shape = SubResource( 6 )
 
 [node name="PressE" type="Label" parent="ItemPickup"]
 visible = false
-margin_left = -19.0
-margin_top = -43.0
-margin_right = 27.0
-margin_bottom = -29.0
+margin_left = -101.0
+margin_top = -103.0
+margin_right = 119.0
+margin_bottom = -39.0
+custom_fonts/font = ExtResource( 6 )
 text = "Press E"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -52,7 +52,7 @@ func _physics_process(delta):
 	if not _velocity == Vector2.ZERO:
 		_ap.play("walk")
 	
-	$ItemPickup/PressE.rect_position = position + Vector2(-19, -43)
+	$ItemPickup/PressE.rect_position = position + Vector2(-101, -103)
 	
 	
 func _unhandled_input(event):

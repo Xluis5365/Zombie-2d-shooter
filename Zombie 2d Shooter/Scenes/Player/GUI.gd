@@ -14,6 +14,12 @@ func _ready() -> void:
 	for slot in $Marg/Rows/Inventory.get_children():
 		slots.append("")
 		slot.connect("pressed", self, "_on_inv_item_pressed", [slot.get_index()])
+		
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_on_pause_pressed()
+		get_tree().set_input_as_handled()
 
 
 func set_info(p: KinematicBody2D):
