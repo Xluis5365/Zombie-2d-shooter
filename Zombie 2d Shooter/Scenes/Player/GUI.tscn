@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/CurAmmoFont.tres" type="DynamicFont" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Sprites/GUI/Pause.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/GUI/InvBox.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/Pixellari16.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Sprites/GUI/EnemyMiniMap.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/GUI/PlayerMiniMap.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/GUI/ItemMiniMap.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )
@@ -293,8 +296,9 @@ alignment = 2
 
 [node name="CurAmmo" type="Label" parent="BottomRow/AmmoSection"]
 margin_left = 336.0
+margin_top = 33.0
 margin_right = 404.0
-margin_bottom = 131.0
+margin_bottom = 97.0
 custom_fonts/font = ExtResource( 2 )
 text = "30"
 valign = 1
@@ -304,8 +308,9 @@ __meta__ = {
 
 [node name="Separator" type="Label" parent="BottomRow/AmmoSection"]
 margin_left = 408.0
+margin_top = 33.0
 margin_right = 476.0
-margin_bottom = 131.0
+margin_bottom = 97.0
 custom_fonts/font = ExtResource( 2 )
 text = " / "
 valign = 1
@@ -315,14 +320,39 @@ __meta__ = {
 
 [node name="MaxAmmo" type="Label" parent="BottomRow/AmmoSection"]
 margin_left = 480.0
+margin_top = 33.0
 margin_right = 548.0
-margin_bottom = 131.0
+margin_bottom = 97.0
 custom_fonts/font = ExtResource( 2 )
 text = "30"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MiniMap" type="ColorRect" parent="."]
+anchor_left = 0.05
+anchor_top = 0.181944
+anchor_right = 0.175
+anchor_bottom = 0.456944
+margin_right = 160.0
+margin_bottom = -18.0
+rect_min_size = Vector2( 320, 180 )
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Player" type="Sprite" parent="MiniMap"]
+texture = ExtResource( 8 )
+
+[node name="Enemy" type="Sprite" parent="MiniMap"]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="Item" type="Sprite" parent="MiniMap"]
+visible = false
+texture = ExtResource( 9 )
 
 [node name="PausePop" type="PopupPanel" parent="."]
 pause_mode = 2

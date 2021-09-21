@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 
+signal died(this)
+
 enum _States {
 	IDLE,
 	ATTACK,
@@ -46,6 +48,7 @@ func _on_attack_body_entered(_body: Node) -> void:
 	
 	
 func _die() -> void:
+	emit_signal("died", self)
 	queue_free()
 
 
