@@ -23,3 +23,7 @@ func _on_Music_value_changed(value: float) -> void:
 
 func _on_Sound_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), value)
+
+
+func _on_Master_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
