@@ -296,8 +296,8 @@ margin_left = 336.0
 margin_right = 404.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
-text = "30
-"
+text = "30"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -307,8 +307,8 @@ margin_left = 408.0
 margin_right = 476.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
-text = " / 
-"
+text = " / "
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,8 +318,8 @@ margin_left = 480.0
 margin_right = 548.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
-text = "30
-"
+text = "30"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
