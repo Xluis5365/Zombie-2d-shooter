@@ -12,7 +12,6 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=11]
 [ext_resource path="res://Scenes/Items/Bullets.tscn" type="PackedScene" id=12]
 
-
 [sub_resource type="TileSet" id=1]
 1/name = "Grasstile.png 1"
 1/texture = ExtResource( 8 )
@@ -158,8 +157,8 @@ environment = ExtResource( 11 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -33.765
 autoplay = true
+bus = "Music"
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -15,7 +15,6 @@
 [ext_resource path="res://Fonts/Pausemenu.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Fonts/Pausemenutittle.tres" type="DynamicFont" id=14]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )
 border_width_left = 3
@@ -28,7 +27,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.25098, 0.25098, 0.25098, 0.780392 )
 border_width_left = 2
 border_width_top = 2
@@ -137,6 +136,7 @@ margin_bottom = 64.0
 mouse_filter = 2
 size_flags_vertical = 3
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -357,6 +357,7 @@ margin_top = -131.0
 mouse_filter = 2
 size_flags_vertical = 3
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -372,7 +373,7 @@ margin_bottom = 90.0
 rect_min_size = Vector2( 600, 50 )
 mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 8 )
+custom_styles/bg = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 value = 76.0
 
@@ -435,6 +436,7 @@ rect_min_size = Vector2( 250, 180 )
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.501961 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -451,6 +453,7 @@ texture = ExtResource( 9 )
 
 [node name="PausePop" type="PopupPanel" parent="."]
 pause_mode = 2
+visible = true
 margin_left = -0.629974
 margin_top = -0.629944
 margin_right = 639.37
@@ -465,10 +468,10 @@ __meta__ = {
 material = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true,
@@ -476,29 +479,37 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PausePop/VBoxContainer"]
-margin_top = 72.0
-margin_right = 632.0
-margin_bottom = 140.0
+margin_top = 60.0
+margin_right = 580.0
+margin_bottom = 96.0
 custom_fonts/font = ExtResource( 14 )
 text = "Paused"
 align = 1
 
 [node name="Resume" type="Button" parent="PausePop/VBoxContainer"]
-margin_left = 50.0
-margin_top = 141.0
+margin_top = 100.0
 margin_right = 580.0
-margin_bottom = 176.0
+margin_bottom = 132.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 13 )
 text = "Resume"
 
-[node name="TitleScreen" type="Button" parent="PausePop/VBoxContainer"]
-margin_left = 50.0
-margin_top = 180.0
+[node name="Options" type="Button" parent="PausePop/VBoxContainer"]
+margin_top = 136.0
 margin_right = 580.0
-margin_bottom = 212.0
+margin_bottom = 168.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 13 )
+text = "Options"
+
+[node name="TitleScreen" type="Button" parent="PausePop/VBoxContainer"]
+margin_top = 172.0
+margin_right = 580.0
+margin_bottom = 204.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
@@ -506,10 +517,9 @@ custom_fonts/font = ExtResource( 13 )
 text = "Title Screen"
 
 [node name="Quit" type="Button" parent="PausePop/VBoxContainer"]
-margin_left = 50.0
-margin_top = 216.0
+margin_top = 208.0
 margin_right = 580.0
-margin_bottom = 248.0
+margin_bottom = 240.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
@@ -524,5 +534,6 @@ text = "Quit"
 [connection signal="pressed" from="Inventory/Pause" to="." method="_on_pause_pressed"]
 [connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PausePop/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/TitleScreen" to="." method="_on_TitleScreen_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

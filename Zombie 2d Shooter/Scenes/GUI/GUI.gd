@@ -199,3 +199,7 @@ func _on_slot_gui_input(event: InputEvent, i: int) -> void:
 
 func _on_TitleScreen_pressed():
 	get_tree().change_scene(_MAIN_MENU)
+
+
+func _on_Options_pressed() -> void:
+	Options.popup_centered()

@@ -271,7 +271,7 @@ __meta__ = {
 margin_right = 1280.0
 margin_bottom = 85.0
 
-[node name="Option_Button" type="Button" parent="VBoxContainer/CenterContainer"]
+[node name="OptionButton" type="Button" parent="VBoxContainer/CenterContainer"]
 margin_left = 475.0
 margin_right = 804.0
 margin_bottom = 85.0
@@ -285,3 +285,4 @@ custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
 text = "  Option  "
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Play_Button" to="." method="_on_Play_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/OptionButton" to="." method="_on_OptionButton_pressed"]

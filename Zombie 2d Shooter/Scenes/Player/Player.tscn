@@ -207,10 +207,12 @@ __meta__ = {
 position = Vector2( 59.4383, 7.37288 )
 stream = ExtResource( 10 )
 volume_db = -10.111
+bus = "Sound"
 
 [node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 volume_db = -7.222
+bus = "Sound"
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered" flags=3]

@@ -136,6 +136,7 @@ shape = SubResource( 7 )
 [node name="Hurt_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = -5.778
+bus = "Sound"
 
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
