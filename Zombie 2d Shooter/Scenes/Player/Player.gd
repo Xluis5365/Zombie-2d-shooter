@@ -7,8 +7,6 @@ signal weapon_ammo_changed(new_ammo_count)
 signal weapon_out_of_ammo
 signal item_picked_up(item)
 
-onready var gun_shot := $gun_shot
-
 export(int) var health := 100
 export(int) var max_ammo := 30
 
@@ -32,6 +30,7 @@ onready var _sniper := $Hand/Sniper
 onready var _uzi_end := $Hand/BulletPoints/UziEnd
 onready var _cooldown := $Cooldown
 onready var _muzzle_flash := $MuzzleFlash
+onready var gun_shot := $GunShot
 
 
 func _ready() -> void:
@@ -81,7 +80,7 @@ func _shoot():
 		_muzzle_flash.emitting = true
 		var uzi_bullet_instance = _uzi_bullet.instance()
 		var dir: Vector2 = Vector2.RIGHT.rotated(rotation)
-		gun_shot.playing = true
+		gun_shot.play()
 		emit_signal("player_fired", uzi_bullet_instance, _uzi_end.global_position, dir)
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)

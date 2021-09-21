@@ -202,7 +202,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="gun_shot" type="AudioStreamPlayer2D" parent="."]
+[node name="GunShot" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 59.4383, 7.37288 )
 stream = ExtResource( 10 )
 volume_db = -10.111
