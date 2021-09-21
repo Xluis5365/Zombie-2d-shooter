@@ -198,3 +198,9 @@ func _on_slot_gui_input(event: InputEvent, i: int) -> void:
 		while slots[i].stack != 0:
 			emit_signal("item_dropped", slots[i].id)
 			remove_item(i)
+
+#const MainMenu = preload("res://Scenes/Menu/Main Menu.tscn")
+
+#func _on_TitleScreen_pressed():
+#	get_parent().add_child(MainMenu.instance())
+#	queue_free()

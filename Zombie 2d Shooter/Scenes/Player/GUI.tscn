@@ -523,4 +523,5 @@ text = "Quit"
 [connection signal="pressed" from="Inventory/Pause" to="." method="_on_pause_pressed"]
 [connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PausePop/VBoxContainer/TitleScreen" to="." method="_on_TitleScreen_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
