@@ -31,7 +31,7 @@ func _ready() -> void:
 	var map_objects = get_tree().get_nodes_in_group("mini_map_objects")
 	for object in map_objects:
 		add_mini_map_object(object)
-
+		
 
 func _process(_delta: float) -> void:
 	if not _player:
