@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Mutant Growl.mp3-3a25ea8201e72bae62034fca7f03f262.mp3str"
+
+[deps]
+
+source_file="res://MusicSounds/Sounds/Mutant Growl.mp3"
+dest_files=[ "res://.import/Mutant Growl.mp3-3a25ea8201e72bae62034fca7f03f262.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

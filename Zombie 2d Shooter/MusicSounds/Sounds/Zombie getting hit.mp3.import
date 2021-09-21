@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Zombie getting hit.mp3-6de259a0733576efe3df8b3b0cdeaee6.mp3str"
+
+[deps]
+
+source_file="res://MusicSounds/Sounds/Zombie getting hit.mp3"
+dest_files=[ "res://.import/Zombie getting hit.mp3-6de259a0733576efe3df8b3b0cdeaee6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

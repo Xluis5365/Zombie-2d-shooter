@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gun-shot-6178.mp3-5978ead5886ed32a867f9e370493ec9f.mp3str"
+
+[deps]
+
+source_file="res://MusicSounds/Sounds/gun-shot-6178.mp3"
+dest_files=[ "res://.import/gun-shot-6178.mp3-5978ead5886ed32a867f9e370493ec9f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

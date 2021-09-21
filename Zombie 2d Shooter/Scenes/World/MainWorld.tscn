@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/World/MainWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Items/Health.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Music and Sounds/Music/epic-heart-main-6677.mp3" type="AudioStream" id=3]
+[ext_resource path="res://MusicSounds/Music/epic-heart-main-6677.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Sprites/World/Streets.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=7]

@@ -9,7 +9,7 @@
 [ext_resource path="res://Sprites/World/WhiteSquare.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Player/PlayerCamoNoGun.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=9]
-[ext_resource path="res://Music and Sounds/Sounds/GunShotSnglShotIn PE1097906.mp3" type="AudioStream" id=10]
+[ext_resource path="res://MusicSounds/Sounds/GunShotSnglShotIn PE1097906.mp3" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 17.0

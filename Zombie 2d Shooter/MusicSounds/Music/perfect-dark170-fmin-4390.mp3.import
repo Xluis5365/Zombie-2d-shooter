@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/perfect-dark170-fmin-4390.mp3-df84f127d3d9ab55b5d9ad205eb6cb89.mp3str"
+
+[deps]
+
+source_file="res://MusicSounds/Music/perfect-dark170-fmin-4390.mp3"
+dest_files=[ "res://.import/perfect-dark170-fmin-4390.mp3-df84f127d3d9ab55b5d9ad205eb6cb89.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
