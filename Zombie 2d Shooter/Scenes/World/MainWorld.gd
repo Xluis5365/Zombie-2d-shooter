@@ -27,12 +27,18 @@ func _ready() -> void:
 	if not in_cutscene:
 		$Timer.wait_time = _DAY_TIME
 		$Timer.start()
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.connect("died", self, "_on_enemy_died")
 
 
 func handle_bullet_spawned(bullet: KinematicBody2D, pos: Vector2, direction: Vector2):
 	add_child(bullet)
 	bullet.global_position = pos
 	bullet.set_direction(direction)
+
+
+func _on_enemy_died(enemy: KinematicBody2D) -> void:
+	$GUI.remove_mini_map_object(enemy)
 
 
 func _on_timer_timeout() -> void:
@@ -61,3 +67,4 @@ func _on_item_dropped(id: String) -> void:
 	var item: Area2D = load(_ITEM_PATH % id).instance()
 	$Items.add_child(item)
 	item.position = _player.position
+	$GUI.add_mini_map_object(item)

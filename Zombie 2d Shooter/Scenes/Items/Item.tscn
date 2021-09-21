@@ -2,7 +2,10 @@
 
 [ext_resource path="res://Scenes/Items/Item.gd" type="Script" id=1]
 
-[node name="Item" type="Area2D"]
+[node name="Item" type="Area2D" groups=[
+"items",
+"mini_map_objects",
+]]
 monitoring = false
 collision_layer = 16
 collision_mask = 0
