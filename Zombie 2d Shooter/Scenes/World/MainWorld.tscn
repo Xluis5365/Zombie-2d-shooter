@@ -157,7 +157,7 @@ environment = ExtResource( 11 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -17.558
+volume_db = -33.765
 autoplay = true
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
