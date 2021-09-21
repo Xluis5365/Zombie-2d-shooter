@@ -21,6 +21,7 @@ var in_cutscene := false
 var _velocity := Vector2()
 var _cur_weapon := 0
 var _reloading := false
+var _hold_to_shoot := true
 
 onready var _ap := $AnimationPlayer
 onready var _uzi := $Hand/Uzi
@@ -73,6 +74,8 @@ func _unhandled_input(event):
 			yield(get_tree(), "idle_frame")
 			if $ItemPickup.get_overlapping_areas().size() == 0:
 				$ItemPickup/PressE.hide()
+	elif event.is_action_pressed("switch_hold_to_shoot"):
+		_hold_to_shoot = not _hold_to_shoot
 		
 
 func _shoot():
@@ -128,5 +131,5 @@ func _on_item_pickup_area_exited(_area: Area2D) -> void:
 
 
 func _on_cooldown_timeout() -> void:
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and _hold_to_shoot:
 		_shoot()
