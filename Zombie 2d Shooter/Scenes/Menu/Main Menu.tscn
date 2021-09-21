@@ -7,19 +7,19 @@
 [ext_resource path="res://Scenes/Menu/Menu backfround1.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Menu/Main Menu.gdshader" type="Shader" id=6]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
 shader_param/tiled_factor = Vector2( 1, 1 )
 shader_param/aspect_ratio = 1.0
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.021978, 1 )
 colors = PoolColorArray( 0.462891, 0.0397797, 0.0397797, 1, 0.998047, 0.0935669, 0.0935669, 1 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=4]
 lifetime_randomness = 0.6
 flag_disable_z = true
 spread = 83.3
@@ -35,9 +35,9 @@ radial_accel = 20.0
 angle = 137.1
 scale = 10.0
 scale_random = 0.5
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=5]
 lifetime_randomness = 0.6
 flag_disable_z = true
 spread = 83.3
@@ -53,9 +53,9 @@ radial_accel = 20.0
 angle = 137.1
 scale = 10.0
 scale_random = 0.5
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.545098, 0.0745098, 0.501961, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -74,7 +74,7 @@ shadow_color = Color( 0.160784, 0.0196078, 0.105882, 0.737255 )
 shadow_size = 8
 shadow_offset = Vector2( 5, 5 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.301961, 0.027451, 0.286275, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -93,13 +93,13 @@ shadow_color = Color( 0.160784, 0.0196078, 0.105882, 1 )
 shadow_size = 8
 shadow_offset = Vector2( 5, 5 )
 
-[sub_resource type="InputEventAction" id=9]
+[sub_resource type="InputEventAction" id=8]
 action = "ui_accept"
 
-[sub_resource type="ShortCut" id=10]
-shortcut = SubResource( 9 )
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.545098, 0.0745098, 0.501961, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -115,29 +115,29 @@ expand_margin_left = 20.0
 expand_margin_right = 20.0
 expand_margin_top = 5.0
 shadow_color = Color( 0.160784, 0.0196078, 0.105882, 0.737255 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.301961, 0.027451, 0.286275, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color( 0.105882, 0.992157, 0, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+expand_margin_top = 5.0
+shadow_color = Color( 0.160784, 0.0196078, 0.105882, 1 )
 shadow_size = 8
 shadow_offset = Vector2( 5, 5 )
 
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.301961, 0.027451, 0.286275, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 3
-border_color = Color( 0.105882, 0.992157, 0, 1 )
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 20.0
-expand_margin_right = 20.0
-expand_margin_top = 5.0
-shadow_color = Color( 0.160784, 0.0196078, 0.105882, 1 )
-shadow_size = 8
-shadow_offset = Vector2( 5, 5 )
-
-[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.301961, 0.027451, 0.286275, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -180,7 +180,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="CenterContainer2"]
-material = SubResource( 2 )
+material = SubResource( 1 )
 position = Vector2( 640, 360 )
 texture = ExtResource( 5 )
 
@@ -216,13 +216,13 @@ text = "A Dead Sunrise"
 position = Vector2( 324.196, 179.707 )
 amount = 20
 lifetime = 2.0
-process_material = SubResource( 5 )
+process_material = SubResource( 4 )
 
 [node name="Blood2" type="Particles2D" parent="."]
 position = Vector2( 1096.93, 183.254 )
 amount = 20
 lifetime = 2.0
-process_material = SubResource( 6 )
+process_material = SubResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -247,14 +247,14 @@ margin_bottom = 85.0
 [node name="Play_Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
 margin_right = 349.0
 margin_bottom = 85.0
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
 custom_styles/normal = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.0980392, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
-shortcut = SubResource( 10 )
+shortcut = SubResource( 9 )
 text = "    Play    "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -275,12 +275,12 @@ margin_bottom = 85.0
 margin_left = 475.0
 margin_right = 804.0
 margin_bottom = 85.0
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.0980392, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
-shortcut = SubResource( 10 )
+shortcut = SubResource( 9 )
 text = "  Option  "
