@@ -9,11 +9,12 @@
 [ext_resource path="res://Sprites/GUI/EnemyMiniMap.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/GUI/PlayerMiniMap.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/GUI/ItemMiniMap.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Menu/pausemenubuttom.tres" type="StyleBox" id=10]
-[ext_resource path="res://Scenes/Menu/pausemenubuttomhover.tres" type="StyleBox" id=11]
-[ext_resource path="res://Scenes/Menu/pausemenubuttompressed.tres" type="StyleBox" id=12]
+[ext_resource path="res://Scenes/Menu/PauseMenuButton.tres" type="StyleBox" id=10]
+[ext_resource path="res://Scenes/Menu/PauseMenuButtonHover.tres" type="StyleBox" id=11]
+[ext_resource path="res://Scenes/Menu/PauseMenuButtonPressed.tres" type="StyleBox" id=12]
 [ext_resource path="res://Fonts/Pausemenu.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Fonts/Pausemenutittle.tres" type="DynamicFont" id=14]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )

@@ -3,6 +3,8 @@ extends CanvasLayer
 
 signal item_dropped(id)
 
+const _MAIN_MENU := "res://Scenes/Menu/MainMenu.tscn"
+
 # Array of dictionaries
 var slots := []
 
@@ -11,7 +13,6 @@ var _mini_map_zoom := 1.5
 var _mini_map_scale: Vector2
 var _markers := {}
 
-const MainMenu = preload("res://Scenes/Menu/Main Menu.tscn")
 
 onready var _inventory := $Inventory
 onready var _health_bar = $BottomRow/Center/HealthBar
@@ -68,14 +69,8 @@ func _input(event: InputEvent) -> void:
 		get_tree().set_input_as_handled()
 	elif event.is_action_pressed("5"):
 		_on_inv_item_pressed(4)
-	elif event.is_action_pressed("m"):
+	elif event.is_action_pressed("map"):
 		$MiniMap.visible = not $MiniMap.visible
-		get_tree().set_input_as_handled()
-	elif event.is_action_pressed("scroll_up"):
-		_set_mini_map_zoom(_mini_map_zoom + 0.1)
-		get_tree().set_input_as_handled()
-	elif event.is_action_pressed("scroll_down"):
-		_set_mini_map_zoom(_mini_map_zoom - 0.1)
 		get_tree().set_input_as_handled()
 
 
@@ -202,7 +197,5 @@ func _on_slot_gui_input(event: InputEvent, i: int) -> void:
 			remove_item(i)
 
 
-
 func _on_TitleScreen_pressed():
-	get_parent().add_child(MainMenu.instance())
-	queue_free()
+	get_tree().change_scene(_MAIN_MENU)

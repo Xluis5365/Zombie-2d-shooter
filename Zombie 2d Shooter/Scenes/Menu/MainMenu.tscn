@@ -1,14 +1,14 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Fonts/Title.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Fonts/Buttons.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Scenes/Menu/Playbuttonnormal.tres" type="StyleBox" id=3]
-[ext_resource path="res://Scenes/Menu/Main Menu.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Menu/Menu backfround1.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Menu/Main Menu.gdshader" type="Shader" id=6]
+[ext_resource path="res://Scenes/Menu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/Buttons.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Menu/MenuBackground.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Menu/MainMenu.gdshader" type="Shader" id=5]
+[ext_resource path="res://Scenes/Menu/PlayButtonNormal.tres" type="StyleBox" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 6 )
+shader = ExtResource( 5 )
 shader_param/tiled_factor = Vector2( 1, 1 )
 shader_param/aspect_ratio = 1.0
 
@@ -159,7 +159,7 @@ shadow_offset = Vector2( 5, 5 )
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -182,7 +182,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="CenterContainer2"]
 material = SubResource( 1 )
 position = Vector2( 640, 360 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 179.0
@@ -204,7 +204,7 @@ margin_bottom = 135.0
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/CenterContainer"]
 margin_right = 922.0
 margin_bottom = 135.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.964706, 0.0392157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.380392, 0.196078, 0.0352941, 1 )
@@ -249,8 +249,8 @@ margin_right = 349.0
 margin_bottom = 85.0
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
-custom_styles/normal = ExtResource( 3 )
-custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.0980392, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
@@ -278,11 +278,10 @@ margin_bottom = 85.0
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.0980392, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
-shortcut = SubResource( 9 )
 text = "  Option  "
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Play_Button" to="." method="_on_Play_Button_pressed"]
