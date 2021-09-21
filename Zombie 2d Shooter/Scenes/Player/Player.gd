@@ -95,7 +95,7 @@ func _set_current_ammo(new_ammo: int):
 
 
 func start_reload():
-	if gui.find_item("Bullets") != 1 and not cur_ammo == max_ammo:
+	if gui.find_item("Bullets") != -1 and not cur_ammo == max_ammo:
 		_ap.play("reload")
 		gui.remove_item(gui.find_item("Bullets"))
 		_reloading = true
