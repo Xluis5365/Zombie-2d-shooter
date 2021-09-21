@@ -1,7 +1,6 @@
 extends Control
 
-const test = preload("res://Scenes/World/MainWorld.tscn")
-
+onready var test = load("res://Scenes/World/MainWorld.tscn")
 
 
 

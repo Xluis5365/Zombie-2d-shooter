@@ -11,6 +11,8 @@ var _mini_map_zoom := 1.5
 var _mini_map_scale: Vector2
 var _markers := {}
 
+const MainMenu = preload("res://Scenes/Menu/Main Menu.tscn")
+
 onready var _inventory := $Inventory
 onready var _health_bar = $BottomRow/Center/HealthBar
 onready var _health_tween = $BottomRow/Center/Tween
@@ -199,8 +201,8 @@ func _on_slot_gui_input(event: InputEvent, i: int) -> void:
 			emit_signal("item_dropped", slots[i].id)
 			remove_item(i)
 
-#const MainMenu = preload("res://Scenes/Menu/Main Menu.tscn")
 
-#func _on_TitleScreen_pressed():
-#	get_parent().add_child(MainMenu.instance())
-#	queue_free()
+
+func _on_TitleScreen_pressed():
+	get_parent().add_child(MainMenu.instance())
+	queue_free()
