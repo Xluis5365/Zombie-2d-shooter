@@ -12,8 +12,10 @@ const _DAY_TIME := 60.0
 const _TRANSITION := 6.0
 const _SUNSET_COLOR := Color("ae9050")
 const _NIGHT_COLOR := Color("47476a")
+const _ITEM_PATH := "res://Scenes/Items/%s.tscn"
 
 var _time := DAY
+var in_cutscene := false
 
 onready var _player = $Player
 
@@ -21,9 +23,10 @@ onready var _player = $Player
 func _ready() -> void:
 	_player.connect("player_fired", self, "handle_bullet_spawned")
 	$GUI.set_info(_player)
-	$Timer.wait_time = _DAY_TIME
-	$Timer.start()
 	_player.gui = $GUI
+	if not in_cutscene:
+		$Timer.wait_time = _DAY_TIME
+		$Timer.start()
 
 
 func handle_bullet_spawned(bullet: KinematicBody2D, pos: Vector2, direction: Vector2):
@@ -53,3 +56,8 @@ func _on_tween_all_completed() -> void:
 	else:
 		$Timer.start()
 		
+
+func _on_item_dropped(id: String) -> void:
+	var item: Area2D = load(_ITEM_PATH % id).instance()
+	$Items.add_child(item)
+	item.position = _player.position

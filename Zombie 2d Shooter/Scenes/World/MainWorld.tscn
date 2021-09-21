@@ -127,6 +127,20 @@ stream = ExtResource( 3 )
 volume_db = -26.0
 autoplay = true
 
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Health" parent="Items" instance=ExtResource( 2 )]
+position = Vector2( 116, 164 )
+
+[node name="Bullets" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 321, 78 )
+
+[node name="Bullets2" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 169, 39 )
+
+[node name="Bullets5" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 431.875, 1229.9 )
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
@@ -146,16 +160,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 11 )
 
-[node name="Items" type="Node2D" parent="."]
-
-[node name="Health" parent="Items" instance=ExtResource( 2 )]
-position = Vector2( 116, 164 )
-
-[node name="Bullets" parent="Items" instance=ExtResource( 12 )]
-position = Vector2( 321, 78 )
-
-[node name="Bullets5" parent="Items" instance=ExtResource( 12 )]
-position = Vector2( 431.875, 1229.9 )
-
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="item_dropped" from="GUI" to="." method="_on_item_dropped"]

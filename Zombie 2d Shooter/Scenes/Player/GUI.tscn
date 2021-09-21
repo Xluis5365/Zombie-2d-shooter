@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/CurAmmoFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/Player/GUI.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/GUI/Pause.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/GUI/InvBox.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/Pixellari16.tres" type="DynamicFont" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )
@@ -30,110 +31,244 @@ font_data = ExtResource( 1 )
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="Marg" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_constants/margin_right = 40
-custom_constants/margin_top = 40
-custom_constants/margin_left = 40
-custom_constants/margin_bottom = 80
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Rows" type="VBoxContainer" parent="Marg"]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 1240.0
-margin_bottom = 640.0
-mouse_filter = 2
-
-[node name="Inventory" type="HBoxContainer" parent="Marg/Rows"]
-margin_right = 1200.0
-margin_bottom = 92.0
+[node name="Inventory" type="HBoxContainer" parent="."]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.05
+margin_bottom = 64.0
 mouse_filter = 2
 size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="Slot0" type="TextureButton" parent="Marg/Rows/Inventory"]
+[node name="Slot0" type="TextureButton" parent="Inventory"]
 margin_right = 64.0
-margin_bottom = 92.0
+margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
-stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="Marg/Rows/Inventory/Slot0"]
+[node name="Icon" type="TextureRect" parent="Inventory/Slot0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-stretch_mode = 4
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot1" type="TextureButton" parent="Marg/Rows/Inventory"]
+[node name="Stack" type="Label" parent="Inventory/Slot0"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Num" type="Label" parent="Inventory/Slot0"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="TextureButton" parent="Inventory"]
 margin_left = 68.0
 margin_right = 132.0
-margin_bottom = 92.0
+margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
 stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="Marg/Rows/Inventory/Slot1"]
+[node name="Icon" type="TextureRect" parent="Inventory/Slot1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-stretch_mode = 4
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot2" type="TextureButton" parent="Marg/Rows/Inventory"]
+[node name="Stack" type="Label" parent="Inventory/Slot1"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Num" type="Label" parent="Inventory/Slot1"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="TextureButton" parent="Inventory"]
 margin_left = 136.0
 margin_right = 200.0
-margin_bottom = 92.0
+margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
 stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="Marg/Rows/Inventory/Slot2"]
+[node name="Icon" type="TextureRect" parent="Inventory/Slot2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-stretch_mode = 4
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="TextureButton" parent="Marg/Rows/Inventory"]
-margin_left = 1168.0
-margin_top = 30.0
-margin_right = 1200.0
-margin_bottom = 62.0
+[node name="Stack" type="Label" parent="Inventory/Slot2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Num" type="Label" parent="Inventory/Slot2"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot3" type="TextureButton" parent="Inventory"]
+margin_left = 204.0
+margin_right = 268.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 5 )
+stretch_mode = 3
+
+[node name="Icon" type="TextureRect" parent="Inventory/Slot3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stack" type="Label" parent="Inventory/Slot3"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Num" type="Label" parent="Inventory/Slot3"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot4" type="TextureButton" parent="Inventory"]
+margin_left = 272.0
+margin_right = 336.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 5 )
+stretch_mode = 3
+
+[node name="Icon" type="TextureRect" parent="Inventory/Slot4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stack" type="Label" parent="Inventory/Slot4"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Num" type="Label" parent="Inventory/Slot4"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="TextureButton" parent="Inventory"]
+margin_left = 1120.0
+margin_top = 16.0
+margin_right = 1152.0
+margin_bottom = 48.0
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource( 4 )
 stretch_mode = 2
 
-[node name="MidRow" type="HBoxContainer" parent="Marg/Rows"]
-margin_top = 96.0
-margin_right = 1200.0
-margin_bottom = 464.0
+[node name="BottomRow" type="HBoxContainer" parent="."]
+anchor_left = 0.05
+anchor_top = 0.95
+anchor_right = 0.95
+anchor_bottom = 0.95
+margin_top = -131.0
 mouse_filter = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="BottomRow" type="HBoxContainer" parent="Marg/Rows"]
-margin_top = 468.0
-margin_right = 1200.0
-margin_bottom = 599.0
-mouse_filter = 2
-size_flags_vertical = 3
-
-[node name="Center" type="CenterContainer" parent="Marg/Rows/BottomRow"]
+[node name="Center" type="CenterContainer" parent="BottomRow"]
 margin_right = 600.0
 margin_bottom = 131.0
 mouse_filter = 2
 
-[node name="HealthBar" type="ProgressBar" parent="Marg/Rows/BottomRow/Center"]
+[node name="HealthBar" type="ProgressBar" parent="BottomRow/Center"]
 margin_top = 40.0
 margin_right = 600.0
 margin_bottom = 90.0
@@ -144,11 +279,11 @@ custom_styles/bg = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 value = 100.0
 
-[node name="Tween" type="Tween" parent="Marg/Rows/BottomRow/Center"]
+[node name="Tween" type="Tween" parent="BottomRow/Center"]
 
-[node name="AmmoSection" type="HBoxContainer" parent="Marg/Rows/BottomRow"]
+[node name="AmmoSection" type="HBoxContainer" parent="BottomRow"]
 margin_left = 604.0
-margin_right = 1200.0
+margin_right = 1152.0
 margin_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -156,9 +291,9 @@ mouse_filter = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="CurAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 384.0
-margin_right = 452.0
+[node name="CurAmmo" type="Label" parent="BottomRow/AmmoSection"]
+margin_left = 336.0
+margin_right = 404.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = "30
@@ -167,9 +302,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Separator" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 456.0
-margin_right = 524.0
+[node name="Separator" type="Label" parent="BottomRow/AmmoSection"]
+margin_left = 408.0
+margin_right = 476.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = " / 
@@ -178,9 +313,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MaxAmmo" type="Label" parent="Marg/Rows/BottomRow/AmmoSection"]
-margin_left = 528.0
-margin_right = 596.0
+[node name="MaxAmmo" type="Label" parent="BottomRow/AmmoSection"]
+margin_left = 480.0
+margin_right = 548.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 2 )
 text = "30
@@ -191,8 +326,8 @@ __meta__ = {
 
 [node name="PausePop" type="PopupPanel" parent="."]
 pause_mode = 2
-margin_right = 8.0
-margin_bottom = 8.0
+margin_right = 640.0
+margin_bottom = 360.0
 rect_min_size = Vector2( 640, 360 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -236,7 +371,12 @@ margin_right = 640.0
 margin_bottom = 223.0
 text = "Quit"
 
-[connection signal="pressed" from="Marg/Rows/Inventory/Pause" to="." method="_on_pause_pressed"]
+[connection signal="gui_input" from="Inventory/Slot0" to="." method="_on_slot_gui_input" binds= [ 0 ]]
+[connection signal="gui_input" from="Inventory/Slot1" to="." method="_on_slot_gui_input" binds= [ 1 ]]
+[connection signal="gui_input" from="Inventory/Slot2" to="." method="_on_slot_gui_input" binds= [ 2 ]]
+[connection signal="gui_input" from="Inventory/Slot3" to="." method="_on_slot_gui_input" binds= [ 3 ]]
+[connection signal="gui_input" from="Inventory/Slot4" to="." method="_on_slot_gui_input" binds= [ 4 ]]
+[connection signal="pressed" from="Inventory/Pause" to="." method="_on_pause_pressed"]
 [connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

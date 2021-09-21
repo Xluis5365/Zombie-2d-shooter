@@ -18,6 +18,7 @@ export(int) var _accel := 1000
 
 var cur_ammo := max_ammo
 var gui: CanvasLayer
+var in_cutscene := false
 
 var _velocity := Vector2()
 var _cur_weapon := 0
@@ -38,25 +39,26 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	look_at(get_global_mouse_position())
-	
-	var axis = Vector2.ZERO
-	axis.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	axis.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	axis = axis.normalized()
-	
-	if axis == Vector2.ZERO:
-		_velocity = _velocity.move_toward(Vector2.ZERO, _accel * delta)
-	else:
-		_velocity = _velocity.move_toward(axis * _max_speed, _accel * delta)
-		_velocity = _velocity.clamped(_max_speed)
-	_velocity = move_and_slide(_velocity)
-	
-	if not _reloading:
-		if not _velocity == Vector2.ZERO:
-			_ap.play("walk")
+	if not in_cutscene:
+		look_at(get_global_mouse_position())
+		
+		var axis = Vector2.ZERO
+		axis.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+		axis.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+		axis = axis.normalized()
+		
+		if axis == Vector2.ZERO:
+			_velocity = _velocity.move_toward(Vector2.ZERO, _accel * delta)
 		else:
-			_ap.stop()
+			_velocity = _velocity.move_toward(axis * _max_speed, _accel * delta)
+			_velocity = _velocity.clamped(_max_speed)
+		_velocity = move_and_slide(_velocity)
+		
+		if not _reloading:
+			if not _velocity == Vector2.ZERO:
+				_ap.play("walk")
+			else:
+				_ap.stop()
 	
 	$ItemPickup/PressE.rect_position = position + Vector2(-101, -103)
 	
@@ -65,7 +67,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
 		_shoot()
 	elif event.is_action_released("reload"):
-		_start_reload()
+		start_reload()
 	elif event.is_action_pressed("pickup"):
 		for item in $ItemPickup.get_overlapping_areas():
 			emit_signal("item_picked_up", item)
@@ -84,6 +86,7 @@ func _shoot():
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)
 
+
 func _set_current_ammo(new_ammo: int):
 # warning-ignore:narrowing_conversion
 	cur_ammo = clamp(new_ammo, 0, max_ammo)
@@ -92,10 +95,10 @@ func _set_current_ammo(new_ammo: int):
 	emit_signal("weapon_ammo_changed", cur_ammo)
 
 
-func _start_reload():
-	if "Bullets" in gui.slots and not cur_ammo == max_ammo:
+func start_reload():
+	if gui.find_item("Bullets") != 1 and not cur_ammo == max_ammo:
 		_ap.play("reload")
-		gui.remove_item(gui.slots.find("Bullets"))
+		gui.remove_item(gui.find_item("Bullets"))
 		_reloading = true
 
 
