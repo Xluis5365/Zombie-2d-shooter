@@ -19,7 +19,6 @@ height = 42.0
 [sub_resource type="Animation" id=2]
 resource_name = "reload"
 length = 0.2
-step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hand/Uzi:position")
 tracks/0/interp = 1
@@ -45,18 +44,6 @@ tracks/1/keys = {
 "args": [  ],
 "method": "_stop_reload"
 } ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ReloadSound:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -85,8 +72,7 @@ scale = 0.1
 color = Color( 1, 0.733333, 0, 1 )
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 23.9091
-height = 28.3815
+radius = 13.0
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 44.0114
