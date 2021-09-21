@@ -1,0 +1,151 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Fonts/Title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/Buttons.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.021978, 1 )
+colors = PoolColorArray( 0.462891, 0.0397797, 0.0397797, 1, 0.998047, 0.0935669, 0.0935669, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.6
+flag_disable_z = true
+spread = 83.3
+gravity = Vector3( 0, 70, 0 )
+initial_velocity = -10.0
+initial_velocity_random = 1.0
+angular_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 30.16
+linear_accel_random = 0.13
+radial_accel = 20.0
+angle = 137.1
+scale = 10.0
+scale_random = 0.5
+color_ramp = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.6
+flag_disable_z = true
+spread = 83.3
+gravity = Vector3( 0, 70, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 1.0
+angular_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 30.16
+linear_accel_random = 0.13
+radial_accel = 20.0
+angle = 137.1
+scale = 10.0
+scale_random = 0.5
+color_ramp = SubResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.141176, 0.0117647, 0.133333, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color( 0.956863, 0.333333, 0.184314, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="InputEventAction" id=5]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.6, 0.364706, 0.580392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 179.0
+margin_top = 100.0
+margin_right = 1101.0
+margin_bottom = 235.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 922.0
+margin_bottom = 135.0
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer"]
+margin_right = 922.0
+margin_bottom = 135.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/CenterContainer"]
+margin_right = 922.0
+margin_bottom = 135.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.866667, 0.839216, 0.141176, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.27451, 0.262745, 0.0313726, 1 )
+text = "A Dead Sunrise"
+
+[node name="Blood1" type="Particles2D" parent="."]
+position = Vector2( 324.196, 197.06 )
+amount = 20
+lifetime = 2.0
+process_material = SubResource( 3 )
+
+[node name="Blood2" type="Particles2D" parent="."]
+position = Vector2( 1083.72, 193.055 )
+amount = 20
+lifetime = 2.0
+process_material = SubResource( 4 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.36353
+margin_top = -1.68176
+margin_right = -3.36353
+margin_bottom = -1.68176
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 465.0
+margin_top = 317.0
+margin_right = 814.0
+margin_bottom = 402.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 349.0
+margin_bottom = 85.0
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
+margin_right = 349.0
+margin_bottom = 85.0
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.0980392, 1 )
+custom_colors/font_color_hover = Color( 0.6, 0.603922, 0.0980392, 1 )
+custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
+shortcut = SubResource( 6 )
+text = "    Play    "
