@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/CurAmmoFont.tres" type="DynamicFont" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://Sprites/GUI/EnemyMiniMap.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/GUI/PlayerMiniMap.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/GUI/ItemMiniMap.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Menu/pausemenubuttom.tres" type="StyleBox" id=10]
+[ext_resource path="res://Scenes/Menu/pausemenubuttomhover.tres" type="StyleBox" id=11]
+[ext_resource path="res://Scenes/Menu/pausemenubuttompressed.tres" type="StyleBox" id=12]
+[ext_resource path="res://Fonts/Pausemenu.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Fonts/Pausemenutittle.tres" type="DynamicFont" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )
@@ -30,6 +35,56 @@ border_color = Color( 1, 1, 1, 1 )
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.639216, 0.0627451, 0.741176, 0.796078 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.14902, 0.0196078, 0.184314, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="VisualShaderNodeColorConstant" id=5]
+constant = Color( 0.0692749, 0.123342, 0.443359, 1 )
+
+[sub_resource type="VisualShader" id=6]
+code = "shader_type canvas_item;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:2
+	vec3 n_out2p0 = vec3(0.069275, 0.123342, 0.443359);
+	float n_out2p1 = 1.000000;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -70.6667, 151.333 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 5 )
+nodes/fragment/2/position = Vector2( 200, 160 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -357,14 +412,18 @@ texture = ExtResource( 9 )
 
 [node name="PausePop" type="PopupPanel" parent="."]
 pause_mode = 2
-margin_right = 640.0
-margin_bottom = 360.0
+margin_left = -0.629974
+margin_top = -0.629944
+margin_right = 639.37
+margin_bottom = 359.37
 rect_min_size = Vector2( 640, 360 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PausePop"]
+material = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -378,28 +437,44 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PausePop/VBoxContainer"]
-margin_top = 137.0
-margin_right = 640.0
-margin_bottom = 151.0
+margin_top = 72.0
+margin_right = 632.0
+margin_bottom = 140.0
+custom_fonts/font = ExtResource( 14 )
 text = "Paused"
 align = 1
 
 [node name="Resume" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 155.0
-margin_right = 640.0
-margin_bottom = 175.0
+margin_left = 50.0
+margin_top = 141.0
+margin_right = 580.0
+margin_bottom = 176.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 13 )
 text = "Resume"
 
 [node name="TitleScreen" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 179.0
-margin_right = 640.0
-margin_bottom = 199.0
+margin_left = 50.0
+margin_top = 180.0
+margin_right = 580.0
+margin_bottom = 212.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 13 )
 text = "Title Screen"
 
 [node name="Quit" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 203.0
-margin_right = 640.0
-margin_bottom = 223.0
+margin_left = 50.0
+margin_top = 216.0
+margin_right = 580.0
+margin_bottom = 248.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 13 )
 text = "Quit"
 
 [connection signal="gui_input" from="Inventory/Slot0" to="." method="_on_slot_gui_input" binds= [ 0 ]]
