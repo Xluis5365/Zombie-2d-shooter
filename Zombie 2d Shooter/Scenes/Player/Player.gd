@@ -125,3 +125,8 @@ func _on_item_pickup_area_entered(_area: Area2D) -> void:
 func _on_item_pickup_area_exited(_area: Area2D) -> void:
 	if $ItemPickup.get_overlapping_areas().size() == 0:
 		$ItemPickup/PressE.hide()
+
+
+func _on_cooldown_timeout() -> void:
+	if Input.is_action_pressed("shoot"):
+		_shoot()

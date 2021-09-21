@@ -212,6 +212,7 @@ volume_db = -10.111
 stream = ExtResource( 11 )
 volume_db = -7.222
 
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered" flags=3]
 [connection signal="timeout" from="HurtBox/Invincibility" to="." method="_on_invincibility_timeout" flags=3]
 [connection signal="area_entered" from="ItemPickup" to="." method="_on_item_pickup_area_entered"]
