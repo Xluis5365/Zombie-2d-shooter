@@ -1,11 +1,11 @@
 extends Control
 
 
-onready var test := "res://Scenes/World/MainWorld.tscn"
+onready var LevelSelection := "res://Scenes/Menu/LevelSelection.tscn"
 
 
 func _on_Play_Button_pressed():
-	get_tree().change_scene(test)
+	get_tree().change_scene(LevelSelection)
 
 
 func _on_OptionButton_pressed() -> void:
