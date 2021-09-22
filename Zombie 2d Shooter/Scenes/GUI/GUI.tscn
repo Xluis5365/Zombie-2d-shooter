@@ -14,6 +14,7 @@
 [ext_resource path="res://Scenes/Menu/PauseMenuButtonPressed.tres" type="StyleBox" id=12]
 [ext_resource path="res://Fonts/Pausemenu.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Fonts/Pausemenutittle.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Scenes/GUI/MenuPopoutStyle.tres" type="StyleBox" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )
@@ -43,18 +44,6 @@ corner_radius_bottom_left = 5
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.639216, 0.0627451, 0.741176, 0.796078 )
-border_width_left = 30
-border_width_top = 30
-border_width_right = 30
-border_width_bottom = 30
-border_color = Color( 0.14902, 0.0196078, 0.184314, 1 )
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
 
 [sub_resource type="VisualShaderNodeColorConstant" id=5]
 constant = Color( 0.0692749, 0.123342, 0.443359, 1 )
@@ -459,7 +448,7 @@ margin_top = -0.629944
 margin_right = 639.37
 margin_bottom = 359.37
 rect_min_size = Vector2( 640, 360 )
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -479,17 +468,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PausePop/VBoxContainer"]
-margin_top = 60.0
+margin_top = 78.0
 margin_right = 580.0
-margin_bottom = 96.0
+margin_bottom = 114.0
 custom_fonts/font = ExtResource( 14 )
 text = "Paused"
 align = 1
 
 [node name="Resume" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 100.0
+margin_top = 118.0
 margin_right = 580.0
-margin_bottom = 132.0
+margin_bottom = 150.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
@@ -497,9 +486,9 @@ custom_fonts/font = ExtResource( 13 )
 text = "Resume"
 
 [node name="Options" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 136.0
+margin_top = 154.0
 margin_right = 580.0
-margin_bottom = 168.0
+margin_bottom = 186.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
@@ -507,24 +496,14 @@ custom_fonts/font = ExtResource( 13 )
 text = "Options"
 
 [node name="TitleScreen" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 172.0
+margin_top = 190.0
 margin_right = 580.0
-margin_bottom = 204.0
+margin_bottom = 222.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 13 )
 text = "Title Screen"
-
-[node name="Quit" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 208.0
-margin_right = 580.0
-margin_bottom = 240.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/normal = ExtResource( 10 )
-custom_fonts/font = ExtResource( 13 )
-text = "Quit"
 
 [connection signal="gui_input" from="Inventory/Slot0" to="." method="_on_slot_gui_input" binds= [ 0 ]]
 [connection signal="gui_input" from="Inventory/Slot1" to="." method="_on_slot_gui_input" binds= [ 1 ]]
@@ -536,4 +515,3 @@ text = "Quit"
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/TitleScreen" to="." method="_on_TitleScreen_pressed"]
-[connection signal="pressed" from="PausePop/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

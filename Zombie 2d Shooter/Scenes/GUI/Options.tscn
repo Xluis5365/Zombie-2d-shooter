@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/GUI/Options.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Option.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Sprites/GUI/uncheck.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/GUI/check.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.639216, 0.0627451, 0.741176, 0.796078 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.14902, 0.0196078, 0.184314, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="Options" type="CanvasLayer"]
 pause_mode = 2
@@ -12,6 +27,10 @@ visible = true
 margin_right = 8.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 640, 360 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 anchor_right = 1.0
@@ -26,39 +45,48 @@ __meta__ = {
 }
 
 [node name="FullScreen" type="CheckBox" parent="Options/VBoxContainer"]
-margin_left = 246.0
-margin_top = 106.0
-margin_right = 385.0
-margin_bottom = 130.0
+margin_left = 215.0
+margin_top = 76.0
+margin_right = 416.0
+margin_bottom = 116.0
 size_flags_horizontal = 4
+custom_icons/checked = ExtResource( 4 )
+custom_icons/unchecked = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "Toggle Fullscreen"
 
 [node name="Borderless" type="CheckBox" parent="Options/VBoxContainer"]
-margin_left = 245.0
-margin_top = 134.0
-margin_right = 387.0
-margin_bottom = 158.0
+margin_left = 211.0
+margin_top = 120.0
+margin_right = 420.0
+margin_bottom = 160.0
 size_flags_horizontal = 4
+custom_icons/checked = ExtResource( 4 )
+custom_icons/unchecked = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "Toggle Borderless"
 
 [node name="VSync" type="CheckBox" parent="Options/VBoxContainer"]
-margin_left = 261.0
-margin_top = 162.0
-margin_right = 371.0
-margin_bottom = 186.0
+margin_left = 234.0
+margin_top = 164.0
+margin_right = 398.0
+margin_bottom = 204.0
 size_flags_horizontal = 4
+custom_icons/checked = ExtResource( 4 )
+custom_icons/unchecked = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "Toggle Vsync"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_top = 190.0
+margin_top = 208.0
 margin_right = 632.0
-margin_bottom = 206.0
+margin_bottom = 228.0
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
-margin_top = 1.0
 margin_right = 157.0
-margin_bottom = 15.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
 text = "Music Volume"
 
 [node name="Music" type="HSlider" parent="Options/VBoxContainer/HBoxContainer"]
@@ -71,19 +99,19 @@ min_value = -60.0
 max_value = 0.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_top = 210.0
+margin_top = 232.0
 margin_right = 632.0
-margin_bottom = 226.0
+margin_bottom = 252.0
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer2"]
-margin_top = 1.0
-margin_right = 157.0
-margin_bottom = 15.0
+margin_right = 193.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
 text = "Sound Effects Volume"
 
 [node name="Sound" type="HSlider" parent="Options/VBoxContainer/HBoxContainer2"]
-margin_left = 161.0
+margin_left = 197.0
 margin_right = 632.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
@@ -92,15 +120,15 @@ min_value = -60.0
 max_value = 0.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Options/VBoxContainer"]
-margin_top = 230.0
+margin_top = 256.0
 margin_right = 632.0
-margin_bottom = 246.0
+margin_bottom = 276.0
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer3"]
-margin_top = 1.0
 margin_right = 157.0
-margin_bottom = 15.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
 text = "Master Volume"
 
 [node name="Master" type="HSlider" parent="Options/VBoxContainer/HBoxContainer3"]

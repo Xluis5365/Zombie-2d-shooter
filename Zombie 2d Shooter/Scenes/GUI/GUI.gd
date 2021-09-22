@@ -186,8 +186,8 @@ func _on_resume_pressed() -> void:
 	$PausePop.hide()
 
 
-func _on_quit_pressed() -> void:
-	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+#func _on_quit_pressed() -> void:
+#	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
 
 func _on_slot_gui_input(event: InputEvent, i: int) -> void:

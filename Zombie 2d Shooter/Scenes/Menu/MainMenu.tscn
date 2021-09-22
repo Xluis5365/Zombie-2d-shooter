@@ -284,5 +284,31 @@ custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
 text = "  Option  "
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_top = 565.252
+margin_right = 1280.0
+margin_bottom = 650.252
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer2"]
+margin_right = 1280.0
+margin_bottom = 85.0
+
+[node name="QuitButton" type="Button" parent="VBoxContainer2/CenterContainer"]
+margin_left = 478.0
+margin_right = 802.0
+margin_bottom = 85.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.0980392, 1 )
+custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
+custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
+text = "   Quit    "
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Play_Button" to="." method="_on_Play_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/OptionButton" to="." method="_on_OptionButton_pressed"]
+[connection signal="pressed" from="VBoxContainer2/CenterContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
