@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Title.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Menu/MenuBackground.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Menu/MainMenu.gdshader" type="Shader" id=5]
 [ext_resource path="res://Scenes/Menu/PlayButtonNormal.tres" type="StyleBox" id=6]
+[ext_resource path="res://MusicSounds/Music/suspense-dark-ambient-8413.mp3" type="AudioStream" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 5 )
@@ -308,6 +309,12 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.0980392, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
 text = "   Quit    "
+
+[node name="Bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -33.906
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Play_Button" to="." method="_on_Play_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/OptionButton" to="." method="_on_OptionButton_pressed"]

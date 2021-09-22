@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sprites/World/Levelbutton.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/World/Levelbuttonpressed.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Levelmenu.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scenes/Menu/LevelSelection.gd" type="Script" id=5]
+[ext_resource path="res://MusicSounds/Music/suspense-dark-ambient-8413.mp3" type="AudioStream" id=6]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.477064, 0.963303 )
@@ -442,6 +443,12 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Bgmusic2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -43.15
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Level1" to="." method="_on_Level1_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
