@@ -12,7 +12,7 @@ config_version=4
 
 config/name="Zombie 2d Shooter"
 run/main_scene="res://Scenes/Menu/MainMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Sprites/OutGame/Logo.png"
 
 [autoload]
 
