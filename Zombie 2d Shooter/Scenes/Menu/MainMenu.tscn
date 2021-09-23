@@ -34,7 +34,7 @@ linear_accel = 30.16
 linear_accel_random = 0.13
 radial_accel = 20.0
 angle = 137.1
-scale = 10.0
+scale = 15.0
 scale_random = 0.5
 color_ramp = SubResource( 3 )
 
@@ -52,7 +52,7 @@ linear_accel = 30.16
 linear_accel_random = 0.13
 radial_accel = 20.0
 angle = 137.1
-scale = 10.0
+scale = 15.0
 scale_random = 0.5
 color_ramp = SubResource( 3 )
 
