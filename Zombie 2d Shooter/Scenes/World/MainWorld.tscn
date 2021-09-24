@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/World/MainWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Items/Health.tscn" type="PackedScene" id=2]
@@ -7,10 +7,8 @@
 [ext_resource path="res://Sprites/World/DirtVersion2.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/World/Tent1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/GUI/GUI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sprites/World/light.png" type="Texture" id=10]
-[ext_resource path="res://default_env.tres" type="Environment" id=11]
 [ext_resource path="res://Scenes/Items/Bullets.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Sprites/World/StreeVersion2t.png" type="Texture" id=13]
 
@@ -140,16 +138,10 @@ one_shot = true
 
 [node name="GUI" parent="." instance=ExtResource( 9 )]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 11 )
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
-
-[node name="Tent1" parent="." instance=ExtResource( 8 )]
-position = Vector2( 710.948, -932.535 )
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
