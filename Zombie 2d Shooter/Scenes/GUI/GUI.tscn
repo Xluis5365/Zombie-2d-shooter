@@ -306,53 +306,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopRight" type="HBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -332.0
-margin_bottom = 216.0
-custom_constants/separation = 10
+[node name="TopRight" type="PanelContainer" parent="."]
+margin_left = 1228.0
+margin_right = 1280.0
+margin_bottom = 52.0
+size_flags_vertical = 0
+custom_styles/panel = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="TopRight"]
-margin_right = 270.0
-margin_bottom = 216.0
-size_flags_horizontal = 3
-custom_styles/panel = ExtResource( 16 )
-
-[node name="MiniMap" type="ColorRect" parent="TopRight/PanelContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 260.0
-margin_bottom = 206.0
-rect_min_size = Vector2( 250, 180 )
-mouse_filter = 2
-color = Color( 0, 0, 0, 0.501961 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="Player" type="Sprite" parent="TopRight/PanelContainer/MiniMap"]
-texture = ExtResource( 8 )
-
-[node name="Enemy" type="Sprite" parent="TopRight/PanelContainer/MiniMap"]
-visible = false
-texture = ExtResource( 7 )
-
-[node name="Item" type="Sprite" parent="TopRight/PanelContainer/MiniMap"]
-visible = false
-texture = ExtResource( 9 )
-
-[node name="PanelContainer2" type="PanelContainer" parent="TopRight"]
-margin_left = 280.0
-margin_right = 332.0
-margin_bottom = 52.0
-size_flags_vertical = 0
-custom_styles/panel = ExtResource( 16 )
-
-[node name="Pause" type="TextureButton" parent="TopRight/PanelContainer2"]
+[node name="Pause" type="TextureButton" parent="TopRight"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 42.0
@@ -365,6 +329,45 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="MiniMapPop" type="PopupPanel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -166.0
+margin_top = -108.0
+margin_right = 166.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+custom_styles/panel = ExtResource( 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MiniMap" type="ColorRect" parent="MiniMapPop"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 322.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 250, 180 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Player" type="Sprite" parent="MiniMapPop/MiniMap"]
+texture = ExtResource( 8 )
+
+[node name="Enemy" type="Sprite" parent="MiniMapPop/MiniMap"]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="Item" type="Sprite" parent="MiniMapPop/MiniMap"]
+visible = false
+texture = ExtResource( 9 )
 
 [node name="BottomRow" type="HBoxContainer" parent="."]
 anchor_left = 0.03
@@ -462,7 +465,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="BottomRow/BInv/Top/HBox"]
+[node name="Gun0" type="NinePatchRect" parent="BottomRow/BInv/Top/HBox"]
 margin_right = 264.0
 margin_bottom = 90.0
 size_flags_horizontal = 3
@@ -472,7 +475,9 @@ patch_margin_top = 12
 patch_margin_right = 15
 patch_margin_bottom = 10
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="BottomRow/BInv/Top/HBox"]
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Top/HBox/Gun0"]
+
+[node name="Gun1" type="NinePatchRect" parent="BottomRow/BInv/Top/HBox"]
 margin_left = 268.0
 margin_right = 533.0
 margin_bottom = 90.0
@@ -482,6 +487,8 @@ patch_margin_left = 17
 patch_margin_top = 12
 patch_margin_right = 15
 patch_margin_bottom = 10
+
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Top/HBox/Gun1"]
 
 [node name="Bottom" type="PanelContainer" parent="BottomRow/BInv"]
 margin_top = 162.0
@@ -500,7 +507,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="BottomRow/BInv/Bottom/HBox"]
+[node name="Knife" type="NinePatchRect" parent="BottomRow/BInv/Bottom/HBox"]
 margin_right = 352.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
@@ -511,7 +518,9 @@ patch_margin_top = 12
 patch_margin_right = 15
 patch_margin_bottom = 10
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="BottomRow/BInv/Bottom/HBox"]
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Bottom/HBox/Knife"]
+
+[node name="Explosive" type="NinePatchRect" parent="BottomRow/BInv/Bottom/HBox"]
 margin_left = 356.0
 margin_right = 533.0
 margin_bottom = 35.0
@@ -521,6 +530,8 @@ patch_margin_left = 17
 patch_margin_top = 12
 patch_margin_right = 15
 patch_margin_bottom = 10
+
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Bottom/HBox/Explosive"]
 
 [node name="PausePop" type="PopupPanel" parent="."]
 pause_mode = 2
@@ -591,7 +602,7 @@ text = "Title Screen"
 [connection signal="gui_input" from="TopLeft/Inventory/Slot2" to="." method="_on_slot_gui_input" binds= [ 2 ]]
 [connection signal="gui_input" from="TopLeft/Inventory/Slot3" to="." method="_on_slot_gui_input" binds= [ 3 ]]
 [connection signal="gui_input" from="TopLeft/Inventory/Slot4" to="." method="_on_slot_gui_input" binds= [ 4 ]]
-[connection signal="pressed" from="TopRight/PanelContainer2/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="TopRight/Pause" to="." method="_on_pause_pressed"]
 [connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Options" to="." method="_on_Options_pressed"]

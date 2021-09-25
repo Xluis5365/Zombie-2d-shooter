@@ -93,6 +93,7 @@ hframes = 3
 [node name="Uzi" parent="Guns" instance=ExtResource( 1 )]
 position = Vector2( 48, 6 )
 vframes = 4
+script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

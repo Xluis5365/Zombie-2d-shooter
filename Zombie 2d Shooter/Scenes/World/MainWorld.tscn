@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/World/MainWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Items/Health.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Sprites/World/DirtVersion2.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Items/AK.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/GUI/GUI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sprites/World/light.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/Items/Bullets.tscn" type="PackedScene" id=12]
@@ -107,6 +108,9 @@ position = Vector2( 169, 39 )
 
 [node name="Bullets5" parent="Items" instance=ExtResource( 12 )]
 position = Vector2( 431.875, 1229.9 )
+
+[node name="AK" parent="Items" instance=ExtResource( 8 )]
+position = Vector2( -74, 97 )
 
 [node name="Enemies" type="Node2D" parent="."]
 

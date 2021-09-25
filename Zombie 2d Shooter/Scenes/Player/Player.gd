@@ -6,7 +6,11 @@ signal player_fired(uzi_bullet, position, direction)
 signal weapon_ammo_changed(new_ammo_count)
 signal weapon_out_of_ammo
 signal item_picked_up(item)
+signal gun_picked_up(gun)
 
+const _GUN_PATH := "res://Scenes/Guns/%s.tscn"
+
+export(int) var max_health := 100
 export(int) var health := 100
 export(int) var max_ammo := 30
 
@@ -17,12 +21,12 @@ export(int) var _accel := 1000
 var cur_ammo := max_ammo
 var gui: CanvasLayer
 var in_cutscene := false
+var guns := []
 
 var _velocity := Vector2()
 var _cur_weapon := 0
 var _reloading := false
 var _hold_to_shoot := true
-var _guns := []
 var _cur_gun: Sprite
 
 onready var _ap := $AnimationPlayer
@@ -33,8 +37,8 @@ onready var _muzzle_flash := $MuzzleFlash
 func _ready() -> void:
 	$ItemPickup/PressE.set_as_toplevel(true)
 	for gun in $Guns.get_children():
-		_guns.append(gun)
-	_cur_gun = _guns[0]
+		guns.append(gun)
+	_cur_gun = guns[0]
 	_set_gun(_cur_gun)
 	
 
@@ -70,15 +74,32 @@ func _unhandled_input(event):
 		start_reload()
 	elif event.is_action_pressed("pickup"):
 		for item in $ItemPickup.get_overlapping_areas():
-			emit_signal("item_picked_up", item)
+			if item.is_in_group("guns"):
+				emit_signal("gun_picked_up", item)
+				var gun: Sprite = load(_GUN_PATH % item.id).instance()
+				$Guns.add_child(gun)
+				gun.hide()
+				gun.position = gun.gun_offset
+				guns.append(gun)
+			else:
+				emit_signal("item_picked_up", item)
 			yield(get_tree(), "idle_frame")
 			if $ItemPickup.get_overlapping_areas().size() == 0:
 				$ItemPickup/PressE.hide()
 	elif event.is_action_pressed("switch_hold_to_shoot"):
 		_hold_to_shoot = not _hold_to_shoot
+	elif event.is_action_pressed("switch_knife"):
+		pass
+	elif event.is_action_pressed("switch_gun"):
+		for gun in $Guns.get_children():
+			if gun.visible:
+				gun.hide()
+			else:
+				_set_gun(gun)
 
 
 func _set_gun(gun: Sprite) -> void:
+	gun.show()
 	_cur_gun = gun
 	$GunShot.global_position = _cur_gun.get_node("End").global_position
 	$MuzzleFlash.global_position = _cur_gun.get_node("End").global_position

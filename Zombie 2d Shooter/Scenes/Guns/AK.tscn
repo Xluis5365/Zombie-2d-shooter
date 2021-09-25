@@ -4,6 +4,7 @@
 
 [node name="AK" instance=ExtResource( 1 )]
 frame = 3
+gun_offset = Vector2( 48, 6 )
 
 [node name="End" parent="." index="0"]
 position = Vector2( 9, 0 )
