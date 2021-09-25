@@ -1,12 +1,10 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Sprites/Guns/Guns.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Guns/Gun.tscn" type="PackedScene" id=1]
 
-
-[node name="Ak" type="Node2D"]
-
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 1 )
-vframes = 5
+[node name="AK" instance=ExtResource( 1 )]
 frame = 3
+gun_offset = Vector2( 48, 6 )
+
+[node name="End" parent="." index="0"]
+position = Vector2( 9, 0 )

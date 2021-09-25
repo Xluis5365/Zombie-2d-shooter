@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/CurAmmoFont.tres" type="DynamicFont" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Fonts/Pausemenu.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Fonts/Pausemenutittle.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Scenes/GUI/MenuPopoutStyle.tres" type="StyleBox" id=15]
+[ext_resource path="res://Scenes/GUI/GUIBack.tres" type="StyleBox" id=16]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.513726, 0, 0, 1 )
@@ -86,42 +87,20 @@ shader = SubResource( 5 )
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 59.0
-margin_top = 30.0
-margin_right = 409.0
-margin_bottom = 108.0
-color = Color( 0.607843, 0.137255, 0.0745098, 0.576471 )
+[node name="TopLeft" type="PanelContainer" parent="."]
+margin_right = 356.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+custom_styles/panel = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-margin_left = 1177.0
-margin_top = 45.0
-margin_right = 1224.0
-margin_bottom = 91.0
-color = Color( 0.607843, 0.137255, 0.0745098, 0.403922 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect3" type="ColorRect" parent="."]
-margin_left = 862.0
-margin_top = 22.0
-margin_right = 1160.0
-margin_bottom = 223.0
-color = Color( 0.607843, 0.137255, 0.0745098, 0.403922 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inventory" type="HBoxContainer" parent="."]
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.05
-margin_bottom = 64.0
+[node name="Inventory" type="HBoxContainer" parent="TopLeft"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 346.0
+margin_bottom = 74.0
 mouse_filter = 2
 size_flags_vertical = 3
 __meta__ = {
@@ -129,12 +108,12 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Slot0" type="TextureButton" parent="Inventory"]
+[node name="Slot0" type="TextureButton" parent="TopLeft/Inventory"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
 
-[node name="Icon" type="TextureRect" parent="Inventory/Slot0"]
+[node name="Icon" type="TextureRect" parent="TopLeft/Inventory/Slot0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -144,7 +123,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stack" type="Label" parent="Inventory/Slot0"]
+[node name="Stack" type="Label" parent="TopLeft/Inventory/Slot0"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -158,7 +137,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Num" type="Label" parent="Inventory/Slot0"]
+[node name="Num" type="Label" parent="TopLeft/Inventory/Slot0"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 6 )
@@ -167,14 +146,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot1" type="TextureButton" parent="Inventory"]
+[node name="Slot1" type="TextureButton" parent="TopLeft/Inventory"]
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
 stretch_mode = 3
 
-[node name="Icon" type="TextureRect" parent="Inventory/Slot1"]
+[node name="Icon" type="TextureRect" parent="TopLeft/Inventory/Slot1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -184,7 +163,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stack" type="Label" parent="Inventory/Slot1"]
+[node name="Stack" type="Label" parent="TopLeft/Inventory/Slot1"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -198,7 +177,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Num" type="Label" parent="Inventory/Slot1"]
+[node name="Num" type="Label" parent="TopLeft/Inventory/Slot1"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 6 )
@@ -207,14 +186,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot2" type="TextureButton" parent="Inventory"]
+[node name="Slot2" type="TextureButton" parent="TopLeft/Inventory"]
 margin_left = 136.0
 margin_right = 200.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
 stretch_mode = 3
 
-[node name="Icon" type="TextureRect" parent="Inventory/Slot2"]
+[node name="Icon" type="TextureRect" parent="TopLeft/Inventory/Slot2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -224,7 +203,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stack" type="Label" parent="Inventory/Slot2"]
+[node name="Stack" type="Label" parent="TopLeft/Inventory/Slot2"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -238,7 +217,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Num" type="Label" parent="Inventory/Slot2"]
+[node name="Num" type="Label" parent="TopLeft/Inventory/Slot2"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 6 )
@@ -247,14 +226,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot3" type="TextureButton" parent="Inventory"]
+[node name="Slot3" type="TextureButton" parent="TopLeft/Inventory"]
 margin_left = 204.0
 margin_right = 268.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
 stretch_mode = 3
 
-[node name="Icon" type="TextureRect" parent="Inventory/Slot3"]
+[node name="Icon" type="TextureRect" parent="TopLeft/Inventory/Slot3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -264,7 +243,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stack" type="Label" parent="Inventory/Slot3"]
+[node name="Stack" type="Label" parent="TopLeft/Inventory/Slot3"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -278,7 +257,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Num" type="Label" parent="Inventory/Slot3"]
+[node name="Num" type="Label" parent="TopLeft/Inventory/Slot3"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 6 )
@@ -287,14 +266,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot4" type="TextureButton" parent="Inventory"]
+[node name="Slot4" type="TextureButton" parent="TopLeft/Inventory"]
 margin_left = 272.0
 margin_right = 336.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 5 )
 stretch_mode = 3
 
-[node name="Icon" type="TextureRect" parent="Inventory/Slot4"]
+[node name="Icon" type="TextureRect" parent="TopLeft/Inventory/Slot4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -304,7 +283,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stack" type="Label" parent="Inventory/Slot4"]
+[node name="Stack" type="Label" parent="TopLeft/Inventory/Slot4"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -318,7 +297,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Num" type="Label" parent="Inventory/Slot4"]
+[node name="Num" type="Label" parent="TopLeft/Inventory/Slot4"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 6 )
@@ -327,100 +306,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="TextureButton" parent="Inventory"]
-margin_left = 1120.0
-margin_top = 16.0
-margin_right = 1152.0
-margin_bottom = 48.0
+[node name="TopRight" type="PanelContainer" parent="."]
+margin_left = 1228.0
+margin_right = 1280.0
+margin_bottom = 52.0
+size_flags_vertical = 0
+custom_styles/panel = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="TextureButton" parent="TopRight"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 42.0
+margin_bottom = 42.0
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource( 4 )
 stretch_mode = 2
-
-[node name="BottomRow" type="HBoxContainer" parent="."]
-anchor_left = 0.05
-anchor_top = 0.95
-anchor_right = 0.95
-anchor_bottom = 0.95
-margin_top = -131.0
-mouse_filter = 2
-size_flags_vertical = 3
 __meta__ = {
 "_edit_lock_": true,
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
-[node name="Center" type="CenterContainer" parent="BottomRow"]
-margin_right = 600.0
-margin_bottom = 131.0
-mouse_filter = 2
-
-[node name="HealthBar" type="ProgressBar" parent="BottomRow/Center"]
-margin_top = 40.0
-margin_right = 600.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 600, 50 )
-mouse_filter = 2
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
-value = 76.0
-
-[node name="Tween" type="Tween" parent="BottomRow/Center"]
-
-[node name="AmmoSection" type="HBoxContainer" parent="BottomRow"]
-margin_left = 604.0
-margin_right = 1152.0
-margin_bottom = 131.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="MiniMapPop" type="PopupPanel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -166.0
+margin_top = -108.0
+margin_right = 166.0
+margin_bottom = 108.0
 size_flags_horizontal = 3
-alignment = 2
-
-[node name="CurAmmo" type="Label" parent="BottomRow/AmmoSection"]
-margin_left = 336.0
-margin_top = 33.0
-margin_right = 404.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 2 )
-text = "30"
-valign = 1
+custom_styles/panel = ExtResource( 16 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
 
-[node name="Separator" type="Label" parent="BottomRow/AmmoSection"]
-margin_left = 408.0
-margin_top = 33.0
-margin_right = 476.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 2 )
-text = " / "
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MaxAmmo" type="Label" parent="BottomRow/AmmoSection"]
-margin_left = 480.0
-margin_top = 33.0
-margin_right = 548.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 2 )
-text = "30"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MiniMap" type="ColorRect" parent="."]
-anchor_left = 0.684699
-anchor_top = 0.0429154
-anchor_right = 0.809699
-anchor_bottom = 0.317915
-margin_right = 110.0
-margin_bottom = -18.0
+[node name="MiniMap" type="ColorRect" parent="MiniMapPop"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 322.0
+margin_bottom = 206.0
 rect_min_size = Vector2( 250, 180 )
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.501961 )
@@ -429,16 +358,180 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Player" type="Sprite" parent="MiniMap"]
+[node name="Player" type="Sprite" parent="MiniMapPop/MiniMap"]
 texture = ExtResource( 8 )
 
-[node name="Enemy" type="Sprite" parent="MiniMap"]
+[node name="Enemy" type="Sprite" parent="MiniMapPop/MiniMap"]
 visible = false
 texture = ExtResource( 7 )
 
-[node name="Item" type="Sprite" parent="MiniMap"]
+[node name="Item" type="Sprite" parent="MiniMapPop/MiniMap"]
 visible = false
 texture = ExtResource( 9 )
+
+[node name="BottomRow" type="HBoxContainer" parent="."]
+anchor_left = 0.03
+anchor_top = 0.85
+anchor_right = 0.97
+anchor_bottom = 0.97
+margin_top = -131.0
+mouse_filter = 2
+size_flags_vertical = 3
+custom_constants/separation = 50
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="HealthBar" type="ProgressBar" parent="BottomRow"]
+margin_top = 167.0
+margin_right = 600.0
+margin_bottom = 217.0
+rect_min_size = Vector2( 600, 50 )
+mouse_filter = 2
+size_flags_vertical = 8
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+value = 76.0
+
+[node name="Tween" type="Tween" parent="BottomRow/HealthBar"]
+
+[node name="BInv" type="VBoxContainer" parent="BottomRow"]
+margin_left = 650.0
+margin_right = 1203.0
+margin_bottom = 217.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="AmmoSection" type="HBoxContainer" parent="BottomRow/BInv"]
+margin_right = 553.0
+margin_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="CurAmmo" type="Label" parent="BottomRow/BInv/AmmoSection"]
+margin_right = 34.0
+margin_bottom = 32.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
+text = "30"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Separator" type="Label" parent="BottomRow/BInv/AmmoSection"]
+margin_left = 38.0
+margin_right = 72.0
+margin_bottom = 32.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
+text = " / "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxAmmo" type="Label" parent="BottomRow/BInv/AmmoSection"]
+margin_left = 76.0
+margin_right = 110.0
+margin_bottom = 32.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
+text = "30"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="PanelContainer" parent="BottomRow/BInv"]
+margin_top = 42.0
+margin_right = 553.0
+margin_bottom = 152.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_styles/panel = ExtResource( 16 )
+
+[node name="HBox" type="HBoxContainer" parent="BottomRow/BInv/Top"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 543.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Gun0" type="NinePatchRect" parent="BottomRow/BInv/Top/HBox"]
+margin_right = 264.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+patch_margin_left = 17
+patch_margin_top = 12
+patch_margin_right = 15
+patch_margin_bottom = 10
+
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Top/HBox/Gun0"]
+
+[node name="Gun1" type="NinePatchRect" parent="BottomRow/BInv/Top/HBox"]
+margin_left = 268.0
+margin_right = 533.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+patch_margin_left = 17
+patch_margin_top = 12
+patch_margin_right = 15
+patch_margin_bottom = 10
+
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Top/HBox/Gun1"]
+
+[node name="Bottom" type="PanelContainer" parent="BottomRow/BInv"]
+margin_top = 162.0
+margin_right = 553.0
+margin_bottom = 217.0
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 16 )
+
+[node name="HBox" type="HBoxContainer" parent="BottomRow/BInv/Bottom"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 543.0
+margin_bottom = 45.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Knife" type="NinePatchRect" parent="BottomRow/BInv/Bottom/HBox"]
+margin_right = 352.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource( 5 )
+patch_margin_left = 17
+patch_margin_top = 12
+patch_margin_right = 15
+patch_margin_bottom = 10
+
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Bottom/HBox/Knife"]
+
+[node name="Explosive" type="NinePatchRect" parent="BottomRow/BInv/Bottom/HBox"]
+margin_left = 356.0
+margin_right = 533.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+patch_margin_left = 17
+patch_margin_top = 12
+patch_margin_right = 15
+patch_margin_bottom = 10
+
+[node name="Sprite" type="Sprite" parent="BottomRow/BInv/Bottom/HBox/Explosive"]
 
 [node name="PausePop" type="PopupPanel" parent="."]
 pause_mode = 2
@@ -504,12 +597,12 @@ custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 13 )
 text = "Title Screen"
 
-[connection signal="gui_input" from="Inventory/Slot0" to="." method="_on_slot_gui_input" binds= [ 0 ]]
-[connection signal="gui_input" from="Inventory/Slot1" to="." method="_on_slot_gui_input" binds= [ 1 ]]
-[connection signal="gui_input" from="Inventory/Slot2" to="." method="_on_slot_gui_input" binds= [ 2 ]]
-[connection signal="gui_input" from="Inventory/Slot3" to="." method="_on_slot_gui_input" binds= [ 3 ]]
-[connection signal="gui_input" from="Inventory/Slot4" to="." method="_on_slot_gui_input" binds= [ 4 ]]
-[connection signal="pressed" from="Inventory/Pause" to="." method="_on_pause_pressed"]
+[connection signal="gui_input" from="TopLeft/Inventory/Slot0" to="." method="_on_slot_gui_input" binds= [ 0 ]]
+[connection signal="gui_input" from="TopLeft/Inventory/Slot1" to="." method="_on_slot_gui_input" binds= [ 1 ]]
+[connection signal="gui_input" from="TopLeft/Inventory/Slot2" to="." method="_on_slot_gui_input" binds= [ 2 ]]
+[connection signal="gui_input" from="TopLeft/Inventory/Slot3" to="." method="_on_slot_gui_input" binds= [ 3 ]]
+[connection signal="gui_input" from="TopLeft/Inventory/Slot4" to="." method="_on_slot_gui_input" binds= [ 4 ]]
+[connection signal="pressed" from="TopRight/Pause" to="." method="_on_pause_pressed"]
 [connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Options" to="." method="_on_Options_pressed"]
