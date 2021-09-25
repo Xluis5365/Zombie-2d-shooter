@@ -14,14 +14,16 @@ var _mini_map_scale: Vector2
 var _markers := {}
 
 
-onready var _inventory := $Inventory
+onready var _inventory := $TopLeft/Inventory
+onready var _mini_map := $TopRight/PanelContainer/MiniMap
+onready var _mini_map_player := $TopRight/PanelContainer/MiniMap/Player
 onready var _health_bar = $BottomRow/HealthBar
 onready var _health_tween = $BottomRow/HealthBar/Tween
 onready var _cur_ammo = $BottomRow/BInv/AmmoSection/CurAmmo
 onready var _max_ammo = $BottomRow/BInv/AmmoSection/MaxAmmo
 onready var _icons := {
-	"enemy": $MiniMap/Enemy,
-	"item": $MiniMap/Item,
+	"enemy": $TopRight/PanelContainer/MiniMap/Enemy,
+	"item": $TopRight/PanelContainer/MiniMap/Item,
 }
 
 
@@ -29,8 +31,8 @@ func _ready() -> void:
 	for slot in _inventory.get_children():
 		slots.append({"id": "", "stack": 0})
 		slot.connect("pressed", self, "_on_inv_item_pressed", [slot.get_index()])
-	$MiniMap/Player.position = $MiniMap.rect_size / 2
-	_mini_map_scale = $MiniMap.rect_size / (get_viewport().get_visible_rect().size * _mini_map_zoom)
+	_mini_map_player.position = _mini_map.rect_size / 2
+	_mini_map_scale = _mini_map.rect_size / (get_viewport().get_visible_rect().size * _mini_map_zoom)
 	var map_objects = get_tree().get_nodes_in_group("mini_map_objects")
 	for object in map_objects:
 		add_mini_map_object(object)
@@ -39,15 +41,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not _player:
 		return
-	$MiniMap/Player.rotation = _player.rotation
+	_mini_map_player.rotation = _player.rotation
 	for object in _markers:
-		var obj_pos = (object.position - _player.position) * _mini_map_scale + $MiniMap.rect_size / 2
-		if $MiniMap.get_rect().has_point(obj_pos + $MiniMap.rect_position):
+		var obj_pos = (object.position - _player.position) * _mini_map_scale + _mini_map.rect_size / 2
+		if _mini_map.get_rect().has_point(obj_pos + _mini_map.rect_position):
 			_markers[object].scale = Vector2(1, 1)
 		else:
 			_markers[object].scale = Vector2(0.75, 0.75)
-		obj_pos.x = clamp(obj_pos.x, 0, $MiniMap.rect_size.x)
-		obj_pos.y = clamp(obj_pos.y, 0, $MiniMap.rect_size.y)
+		obj_pos.x = clamp(obj_pos.x, 0, _mini_map.rect_size.x)
+		obj_pos.y = clamp(obj_pos.y, 0, _mini_map.rect_size.y)
 		_markers[object].position = obj_pos
 		
 
@@ -70,7 +72,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("5"):
 		_on_inv_item_pressed(4)
 	elif event.is_action_pressed("map"):
-		$MiniMap.visible = not $MiniMap.visible
+		_mini_map.visible = not _mini_map.visible
 		get_tree().set_input_as_handled()
 
 
@@ -110,7 +112,7 @@ func add_mini_map_object(object) -> void:
 		new_marker = _icons.enemy.duplicate()
 	else:
 		new_marker = _icons.item.duplicate()
-	$MiniMap.add_child(new_marker)
+	_mini_map.add_child(new_marker)
 	new_marker.show()
 	_markers[object] = new_marker
 
@@ -170,7 +172,7 @@ func _on_inv_item_pressed(i: int) -> void:
 
 func _set_mini_map_zoom(value) -> void:
 	_mini_map_zoom = clamp(value, 0.5, 5)
-	_mini_map_scale = $MiniMap.rect_size / (get_viewport().get_visible_rect().size * _mini_map_zoom)
+	_mini_map_scale = _mini_map.rect_size / (get_viewport().get_visible_rect().size * _mini_map_zoom)
 	
 	
 func _on_pause_pressed() -> void:

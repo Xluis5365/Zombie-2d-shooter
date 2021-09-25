@@ -5,6 +5,6 @@
 [node name="Gun" type="Sprite"]
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
-vframes = 4
+vframes = 5
 
 [node name="End" type="Position2D" parent="."]

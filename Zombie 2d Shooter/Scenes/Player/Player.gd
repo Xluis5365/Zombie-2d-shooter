@@ -22,17 +22,21 @@ var _velocity := Vector2()
 var _cur_weapon := 0
 var _reloading := false
 var _hold_to_shoot := true
+var _guns := []
+var _cur_gun: Sprite
 
 onready var _ap := $AnimationPlayer
 onready var _cooldown := $Cooldown
 onready var _muzzle_flash := $MuzzleFlash
-onready var gun_shot := $GunShot
-onready var _cur_gun := $Guns/Uzi
 
 
 func _ready() -> void:
 	$ItemPickup/PressE.set_as_toplevel(true)
-
+	for gun in $Guns.get_children():
+		_guns.append(gun)
+	_cur_gun = _guns[0]
+	_set_gun(_cur_gun)
+	
 
 func _physics_process(delta):
 	if not in_cutscene:
@@ -72,21 +76,26 @@ func _unhandled_input(event):
 				$ItemPickup/PressE.hide()
 	elif event.is_action_pressed("switch_hold_to_shoot"):
 		_hold_to_shoot = not _hold_to_shoot
-		
+
+
+func _set_gun(gun: Sprite) -> void:
+	_cur_gun = gun
+	$GunShot.global_position = _cur_gun.get_node("End").global_position
+	$MuzzleFlash.global_position = _cur_gun.get_node("End").global_position
+
 
 func _shoot():
 	if not cur_ammo == 0 and _cooldown.is_stopped():
 		_muzzle_flash.emitting = true
 		var uzi_bullet_instance = _uzi_bullet.instance()
-		var dir: Vector2 = Vector2.RIGHT.rotated(rotation)
-		gun_shot.play()
-		emit_signal("player_fired", uzi_bullet_instance, _cur_gun.get_node("End").global_position, dir)
+		$GunShot.play()
+		emit_signal("player_fired",uzi_bullet_instance,\
+		_cur_gun.get_node("End").global_position, Vector2.RIGHT.rotated(rotation))
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)
 
 
 func _set_current_ammo(new_ammo: int):
-# warning-ignore:narrowing_conversion
 	cur_ammo = clamp(new_ammo, 0, max_ammo)
 	if cur_ammo == 0:
 		emit_signal("weapon_out_of_ammo")

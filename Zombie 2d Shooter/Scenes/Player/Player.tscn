@@ -92,6 +92,7 @@ hframes = 3
 
 [node name="Uzi" parent="Guns" instance=ExtResource( 1 )]
 position = Vector2( 48, 6 )
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -156,7 +157,6 @@ wait_time = 0.3
 one_shot = true
 
 [node name="MuzzleFlash" type="Particles2D" parent="."]
-position = Vector2( 63, 8 )
 emitting = false
 amount = 13
 lifetime = 0.5
@@ -168,7 +168,6 @@ process_material = SubResource( 4 )
 texture = ExtResource( 7 )
 
 [node name="GunShot" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 59.4383, 7.37288 )
 stream = ExtResource( 10 )
 volume_db = -10.111
 bus = "Sound"
