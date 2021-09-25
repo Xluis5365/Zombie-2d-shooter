@@ -24,14 +24,10 @@ var _reloading := false
 var _hold_to_shoot := true
 
 onready var _ap := $AnimationPlayer
-onready var _uzi := $Hand/Uzi
-onready var _ak := $Hand/AK
-onready var _m4 := $Hand/M4A14
-onready var _sniper := $Hand/Sniper
-onready var _uzi_end := $Hand/BulletPoints/UziEnd
 onready var _cooldown := $Cooldown
 onready var _muzzle_flash := $MuzzleFlash
 onready var gun_shot := $GunShot
+onready var _cur_gun := $Guns/Uzi
 
 
 func _ready() -> void:
@@ -84,7 +80,7 @@ func _shoot():
 		var uzi_bullet_instance = _uzi_bullet.instance()
 		var dir: Vector2 = Vector2.RIGHT.rotated(rotation)
 		gun_shot.play()
-		emit_signal("player_fired", uzi_bullet_instance, _uzi_end.global_position, dir)
+		emit_signal("player_fired", uzi_bullet_instance, _cur_gun.get_node("End").global_position, dir)
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)
 

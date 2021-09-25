@@ -15,10 +15,10 @@ var _markers := {}
 
 
 onready var _inventory := $Inventory
-onready var _health_bar = $BottomRow/Center/HealthBar
-onready var _health_tween = $BottomRow/Center/Tween
-onready var _cur_ammo = $BottomRow/AmmoSection/CurAmmo
-onready var _max_ammo = $BottomRow/AmmoSection/MaxAmmo
+onready var _health_bar = $BottomRow/HealthBar
+onready var _health_tween = $BottomRow/HealthBar/Tween
+onready var _cur_ammo = $BottomRow/BInv/AmmoSection/CurAmmo
+onready var _max_ammo = $BottomRow/BInv/AmmoSection/MaxAmmo
 onready var _icons := {
 	"enemy": $MiniMap/Enemy,
 	"item": $MiniMap/Item,

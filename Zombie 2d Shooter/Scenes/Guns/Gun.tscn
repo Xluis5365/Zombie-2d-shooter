@@ -2,10 +2,9 @@
 
 [ext_resource path="res://Sprites/Guns/Guns.png" type="Texture" id=1]
 
-[node name="M4A14" type="Node2D"]
-
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Gun" type="Sprite"]
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
-vframes = 5
-frame = 2
+vframes = 4
+
+[node name="End" type="Position2D" parent="."]
