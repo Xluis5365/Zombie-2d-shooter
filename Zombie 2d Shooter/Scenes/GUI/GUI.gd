@@ -67,7 +67,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("5"):
 		_on_inv_item_pressed(4)
 	elif event.is_action_pressed("map"):
-		if _mini_map.visible:
+		if $MiniMapPop.visible:
 			$MiniMapPop.hide()
 		else:
 			$MiniMapPop.popup_centered()
@@ -77,6 +77,7 @@ func set_info(p: KinematicBody2D):
 	_player = p
 
 	_health_bar.value = p.health
+	_health_bar.max_value = p.max_health
 	_set_current_ammo(p.cur_ammo)
 	_set_max_ammo(p.max_ammo)
 	for i in p.guns.size():
