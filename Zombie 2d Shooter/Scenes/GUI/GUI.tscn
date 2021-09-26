@@ -535,6 +535,7 @@ patch_margin_bottom = 10
 
 [node name="PausePop" type="PopupPanel" parent="."]
 pause_mode = 2
+visible = true
 margin_left = -0.629974
 margin_top = -0.629944
 margin_right = 639.37
@@ -560,17 +561,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PausePop/VBoxContainer"]
-margin_top = 78.0
+margin_top = 60.0
 margin_right = 580.0
-margin_bottom = 114.0
+margin_bottom = 96.0
 custom_fonts/font = ExtResource( 14 )
 text = "Paused"
 align = 1
 
 [node name="Resume" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 118.0
+margin_top = 100.0
 margin_right = 580.0
-margin_bottom = 150.0
+margin_bottom = 132.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
@@ -578,19 +579,29 @@ custom_fonts/font = ExtResource( 13 )
 text = "Resume"
 
 [node name="Options" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 154.0
+margin_top = 136.0
 margin_right = 580.0
-margin_bottom = 186.0
+margin_bottom = 168.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 13 )
 text = "Options"
 
-[node name="TitleScreen" type="Button" parent="PausePop/VBoxContainer"]
-margin_top = 190.0
+[node name="Controls" type="Button" parent="PausePop/VBoxContainer"]
+margin_top = 172.0
 margin_right = 580.0
-margin_bottom = 222.0
+margin_bottom = 204.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 13 )
+text = "Controls"
+
+[node name="TitleScreen" type="Button" parent="PausePop/VBoxContainer"]
+margin_top = 208.0
+margin_right = 580.0
+margin_bottom = 240.0
 custom_styles/hover = ExtResource( 11 )
 custom_styles/pressed = ExtResource( 12 )
 custom_styles/normal = ExtResource( 10 )
@@ -606,4 +617,5 @@ text = "Title Screen"
 [connection signal="popup_hide" from="PausePop" to="." method="_on_pause_pop_popup_hide"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="PausePop/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="PausePop/VBoxContainer/TitleScreen" to="." method="_on_TitleScreen_pressed"]
