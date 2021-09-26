@@ -56,18 +56,18 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		_on_pause_pressed()
-	elif event.is_action_pressed("1"):
+	elif event.is_action_pressed("inv_1"):
 		_on_inv_item_pressed(0)
-	elif event.is_action_pressed("2"):
+	elif event.is_action_pressed("inv_2"):
 		_on_inv_item_pressed(1)
-	elif event.is_action_pressed("3"):
+	elif event.is_action_pressed("inv_3"):
 		_on_inv_item_pressed(2)
-	elif event.is_action_pressed("4"):
+	elif event.is_action_pressed("inv_4"):
 		_on_inv_item_pressed(3)
-	elif event.is_action_pressed("5"):
+	elif event.is_action_pressed("inv_5"):
 		_on_inv_item_pressed(4)
 	elif event.is_action_pressed("map"):
-		if _mini_map.visible:
+		if $MiniMapPop.visible:
 			$MiniMapPop.hide()
 		else:
 			$MiniMapPop.popup_centered()
@@ -77,6 +77,7 @@ func set_info(p: KinematicBody2D):
 	_player = p
 
 	_health_bar.value = p.health
+	_health_bar.max_value = p.max_health
 	_set_current_ammo(p.cur_ammo)
 	_set_max_ammo(p.max_ammo)
 	for i in p.guns.size():
@@ -225,3 +226,7 @@ func _on_TitleScreen_pressed():
 
 func _on_Options_pressed() -> void:
 	Options.popup_centered()
+
+
+func _on_controls_pressed() -> void:
+	Controls.show_controls()
