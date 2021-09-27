@@ -4,6 +4,7 @@
 
 [node name="Uzi" instance=ExtResource( 1 )]
 gun_offset = Vector2( 48, 6 )
+id = "Uzi"
 
 [node name="End" parent="." index="0"]
 position = Vector2( 2, 0 )

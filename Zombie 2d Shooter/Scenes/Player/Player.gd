@@ -9,6 +9,10 @@ signal item_picked_up(item)
 signal gun_picked_up(gun)
 
 const _GUN_PATH := "res://Scenes/Guns/%s.tscn"
+const _BULLETS := {
+	"Uzi": preload("res://Scenes/Guns/UziBullet.tscn"),
+	"AK": preload("res://Scenes/Guns/AKBullet.tscn"),
+}
 
 export(int) var max_health := 100
 export(int) var health := 100
@@ -106,9 +110,9 @@ func _set_gun(i: int) -> void:
 func _shoot():
 	if guns[_cur_gun] and not cur_ammo == 0 and _cooldown.is_stopped():
 		_muzzle_flash.emitting = true
-		var uzi_bullet_instance = _uzi_bullet.instance()
+		var bullet = _BULLETS[guns[_cur_gun].id].instance()
 		$GunShot.play()
-		emit_signal("player_fired",uzi_bullet_instance,\
+		emit_signal("player_fired", bullet,\
 		guns[_cur_gun].get_node("End").global_position, Vector2.RIGHT.rotated(rotation))
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)

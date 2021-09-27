@@ -5,6 +5,7 @@
 [node name="M4A14" instance=ExtResource( 1 )]
 frame = 2
 gun_offset = Vector2( 48, 6 )
+id = "M4A14"
 
 [node name="End" parent="." index="0"]
 position = Vector2( 13, 0 )

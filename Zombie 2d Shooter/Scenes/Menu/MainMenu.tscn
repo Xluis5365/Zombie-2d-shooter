@@ -317,7 +317,6 @@ text = "   Quit    "
 
 [node name="Bgmusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -33.906
 autoplay = true
 bus = "Music"
 
