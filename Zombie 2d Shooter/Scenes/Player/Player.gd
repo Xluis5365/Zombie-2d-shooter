@@ -80,7 +80,7 @@ func _unhandled_input(event):
 				gun.hide()
 				gun.position = gun.gun_offset
 				guns[1-_cur_gun] = gun
-			elif not item.is_in_group("guns"):
+			elif not item.is_in_group("guns") and (not gui.is_inventory_full() or not gui.find_item(item.id) == -1):
 				emit_signal("item_picked_up", item)
 			yield(get_tree(), "idle_frame")
 			if $ItemPickup.get_overlapping_areas().size() == 0:

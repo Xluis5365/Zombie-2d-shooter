@@ -112,7 +112,14 @@ func find_item(item: String) -> int:
 		if slots[i].id == item:
 			return i
 	return -1
-	
+
+
+func is_inventory_full() -> bool:
+	for slot in slots:
+		if slot.stack == 0:
+			return false
+	return true
+
 
 func add_mini_map_object(object) -> void:
 	var new_marker: Sprite
