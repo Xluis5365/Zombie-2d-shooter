@@ -21,13 +21,13 @@ export(int) var _accel := 1000
 var cur_ammo := max_ammo
 var gui: CanvasLayer
 var in_cutscene := false
-var guns := []
+var guns := [null, null]
 
 var _velocity := Vector2()
 var _cur_weapon := 0
 var _reloading := false
 var _hold_to_shoot := true
-var _cur_gun: Sprite
+var _cur_gun := -1
 
 onready var _ap := $AnimationPlayer
 onready var _cooldown := $Cooldown
@@ -37,9 +37,8 @@ onready var _muzzle_flash := $MuzzleFlash
 func _ready() -> void:
 	$ItemPickup/PressE.set_as_toplevel(true)
 	for gun in $Guns.get_children():
-		guns.append(gun)
-	_cur_gun = guns[0]
-	_set_gun(_cur_gun)
+		guns[gun.get_index()] = gun
+	_set_gun(0)
 	
 
 func _physics_process(delta):
@@ -74,14 +73,14 @@ func _unhandled_input(event):
 		start_reload()
 	elif event.is_action_pressed("pickup"):
 		for item in $ItemPickup.get_overlapping_areas():
-			if item.is_in_group("guns"):
+			if item.is_in_group("guns") and null in guns:
 				emit_signal("gun_picked_up", item)
 				var gun: Sprite = load(_GUN_PATH % item.id).instance()
 				$Guns.add_child(gun)
 				gun.hide()
 				gun.position = gun.gun_offset
-				guns.append(gun)
-			else:
+				guns[1-_cur_gun] = gun
+			elif not item.is_in_group("guns"):
 				emit_signal("item_picked_up", item)
 			yield(get_tree(), "idle_frame")
 			if $ItemPickup.get_overlapping_areas().size() == 0:
@@ -91,27 +90,26 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("switch_knife"):
 		pass
 	elif event.is_action_pressed("switch_gun"):
-		for gun in $Guns.get_children():
-			if gun.visible:
-				gun.hide()
-			else:
-				_set_gun(gun)
+		_set_gun(1-_cur_gun)
 
 
-func _set_gun(gun: Sprite) -> void:
-	gun.show()
-	_cur_gun = gun
-	$GunShot.global_position = _cur_gun.get_node("End").global_position
-	$MuzzleFlash.global_position = _cur_gun.get_node("End").global_position
+func _set_gun(i: int) -> void:
+	if guns[_cur_gun]:
+		guns[_cur_gun].hide()
+	_cur_gun = i
+	if guns[i]:
+		guns[i].show()
+		$GunShot.global_position = guns[i].get_node("End").global_position
+		$MuzzleFlash.global_position = guns[i].get_node("End").global_position
 
 
 func _shoot():
-	if not cur_ammo == 0 and _cooldown.is_stopped():
+	if guns[_cur_gun] and not cur_ammo == 0 and _cooldown.is_stopped():
 		_muzzle_flash.emitting = true
 		var uzi_bullet_instance = _uzi_bullet.instance()
 		$GunShot.play()
 		emit_signal("player_fired",uzi_bullet_instance,\
-		_cur_gun.get_node("End").global_position, Vector2.RIGHT.rotated(rotation))
+		guns[_cur_gun].get_node("End").global_position, Vector2.RIGHT.rotated(rotation))
 		_cooldown.start()
 		_set_current_ammo(cur_ammo - 1)
 
@@ -124,7 +122,7 @@ func _set_current_ammo(new_ammo: int):
 
 
 func start_reload():
-	if gui.find_item("Bullets") != -1 and not cur_ammo == max_ammo:
+	if guns[_cur_gun] and gui.find_item("Bullets") != -1 and not cur_ammo == max_ammo:
 		_ap.play("reload")
 		gui.remove_item(gui.find_item("Bullets"))
 		_reloading = true

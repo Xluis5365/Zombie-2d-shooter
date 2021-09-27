@@ -81,13 +81,14 @@ func set_info(p: KinematicBody2D):
 	_set_current_ammo(p.cur_ammo)
 	_set_max_ammo(p.max_ammo)
 	for i in p.guns.size():
-		var slot := $BottomRow/BInv/Top/HBox.get_child(i).get_child(0)
-		slot.texture = p.guns[i].texture
-		slot.scale = Vector2(9, 9)
-		slot.centered = false
-		slot.hframes = p.guns[i].hframes
-		slot.vframes = p.guns[i].vframes
-		slot.frame = p.guns[i].frame
+		if p.guns[i]:
+			var slot := $BottomRow/BInv/Top/HBox.get_child(i).get_child(0)
+			slot.texture = p.guns[i].texture
+			slot.scale = Vector2(9, 9)
+			slot.centered = false
+			slot.hframes = p.guns[i].hframes
+			slot.vframes = p.guns[i].vframes
+			slot.frame = p.guns[i].frame
 	
 	_player.connect("player_health_changed", self, "_set_new_health_value")
 	_player.connect("weapon_ammo_changed", self, "_set_current_ammo")
