@@ -159,7 +159,6 @@ one_shot = true
 [node name="MuzzleFlash" type="Particles2D" parent="."]
 emitting = false
 amount = 13
-lifetime = 0.5
 one_shot = true
 speed_scale = 10.28
 explosiveness = 0.09
