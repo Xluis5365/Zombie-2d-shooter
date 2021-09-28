@@ -18,6 +18,7 @@ config/icon="res://Sprites/OutGame/Logo.png"
 
 Options="*res://Scenes/GUI/Options.tscn"
 Controls="*res://Scenes/GUI/Controls.tscn"
+Dialogue="*res://Scenes/Dialogue/Dialogue.tscn"
 
 [debug]
 

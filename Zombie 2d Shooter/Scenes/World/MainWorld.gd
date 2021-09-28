@@ -15,7 +15,7 @@ const _NIGHT_COLOR := Color("47476a")
 const _ITEM_PATH := "res://Scenes/Items/%s.tscn"
 
 var _time := DAY
-var in_cutscene := false
+var in_cutscene := false setget set_in_cutscene
 
 onready var _player = $Player
 
@@ -68,3 +68,13 @@ func _on_item_dropped(id: String) -> void:
 	$Items.add_child(item)
 	item.position = _player.position
 	$GUI.add_mini_map_object(item)
+	
+
+func set_in_cutscene(new_value: bool) -> void:
+	in_cutscene = new_value
+	if in_cutscene:
+		$Tween.stop_all()
+		$Timer.paused = true
+	else:
+		$Tween.resume_all()
+		$Timer.paused = false

@@ -12,6 +12,8 @@ enum _States {
 export(int) var _speed := 100
 export(int) var _health := 60
 
+var in_cutscene := false
+
 var _velocity := Vector2()
 var _state = _States.IDLE
 var _player: KinematicBody2D
@@ -21,6 +23,8 @@ onready var _ap = $AnimationPlayer
 
 
 func _physics_process(_delta):
+	if in_cutscene:
+		return
 	match _state:
 		_States.IDLE:
 			pass

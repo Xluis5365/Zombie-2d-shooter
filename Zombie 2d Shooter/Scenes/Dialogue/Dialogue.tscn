@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Dialogue/DialogueTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/Dialogue/Dialogue.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 3 )
+
+[node name="Dialogue" type="CanvasLayer"]
+layer = 2
+script = ExtResource( 2 )
+
+[node name="Dialogue" type="VBoxContainer" parent="."]
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="PanelContainer" parent="Dialogue"]
+margin_right = 220.0
+margin_bottom = 70.0
+size_flags_horizontal = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/Title"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 210.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 50 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+text = "Title"
+
+[node name="Speech" type="PanelContainer" parent="Dialogue"]
+margin_top = 74.0
+margin_right = 1280.0
+margin_bottom = 216.0
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/Speech"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1270.0
+margin_bottom = 132.0
+bbcode_enabled = true
+text = "Speech"
+
+[node name="SpeechTimer" type="Timer" parent="Dialogue/Speech/RichTextLabel"]
+one_shot = true
+
+[connection signal="timeout" from="Dialogue/Speech/RichTextLabel/SpeechTimer" to="." method="_on_SpeechTimer_timeout"]

@@ -46,31 +46,35 @@ func _ready() -> void:
 	
 
 func _physics_process(delta):
-	if not in_cutscene:
-		look_at(get_global_mouse_position())
-		
-		var axis = Vector2.ZERO
-		axis.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-		axis.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-		axis = axis.normalized()
-		
-		if axis == Vector2.ZERO:
-			_velocity = _velocity.move_toward(Vector2.ZERO, _accel * delta)
+	if in_cutscene:
+		return
+	
+	look_at(get_global_mouse_position())
+	
+	var axis = Vector2.ZERO
+	axis.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	axis.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	axis = axis.normalized()
+	
+	if axis == Vector2.ZERO:
+		_velocity = _velocity.move_toward(Vector2.ZERO, _accel * delta)
+	else:
+		_velocity = _velocity.move_toward(axis * _max_speed, _accel * delta)
+		_velocity = _velocity.clamped(_max_speed)
+	_velocity = move_and_slide(_velocity)
+	
+	if not _reloading:
+		if not _velocity == Vector2.ZERO:
+			_ap.play("walk")
 		else:
-			_velocity = _velocity.move_toward(axis * _max_speed, _accel * delta)
-			_velocity = _velocity.clamped(_max_speed)
-		_velocity = move_and_slide(_velocity)
-		
-		if not _reloading:
-			if not _velocity == Vector2.ZERO:
-				_ap.play("walk")
-			else:
-				_ap.stop()
+			_ap.stop()
 	
 	$ItemPickup/PressE.rect_position = position + Vector2(-101, -103)
 	
 	
 func _unhandled_input(event):
+	if in_cutscene:
+		return
 	if event.is_action_pressed("shoot"):
 		_shoot()
 	elif event.is_action_released("reload"):
