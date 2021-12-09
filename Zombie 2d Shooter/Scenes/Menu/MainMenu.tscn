@@ -210,12 +210,12 @@ margin_bottom = 135.0
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/CenterContainer"]
 margin_right = 922.0
 margin_bottom = 135.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 7.58, 5.08, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.556863, 0.321569, 1 )
 custom_constants/shadow_offset_x = 9
 custom_constants/shadow_offset_y = 3
+custom_fonts/font = ExtResource( 2 )
 text = "A Dead Sunrise"
 
 [node name="Blood1" type="Particles2D" parent="."]
@@ -253,13 +253,13 @@ margin_bottom = 85.0
 [node name="Play_Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
 margin_right = 349.0
 margin_bottom = 85.0
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/normal = ExtResource( 6 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 79.8, 63.45, 0, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = ExtResource( 6 )
 shortcut = SubResource( 9 )
 text = "    Play    "
 
@@ -281,13 +281,13 @@ margin_bottom = 85.0
 margin_left = 475.0
 margin_right = 804.0
 margin_bottom = 85.0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 38.39, 32.49, 0.1, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 text = "  Option  "
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
@@ -306,13 +306,13 @@ margin_bottom = 85.0
 margin_left = 478.0
 margin_right = 802.0
 margin_bottom = 85.0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 65.66, 51.78, 0.1, 1 )
 custom_colors/font_color_hover = Color( 0.933333, 0.941176, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 0.933333, 0.917647, 0.529412, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 text = "   Quit    "
 
 [node name="Bgmusic" type="AudioStreamPlayer" parent="."]
